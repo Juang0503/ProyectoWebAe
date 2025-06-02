@@ -1,0 +1,121 @@
+﻿@model ProyectoAerolineaWeb.Models.DetallePasajeroViewModel
+
+@{
+    ViewData["Title"] = "Datos de los Pasajeros";
+}
+
+<div class="container my-4">
+    <h2>Datos de los Pasajeros</h2>
+
+    @* Mostrar errores de validación generales *@
+    @if (!ViewData.ModelState.IsValid)
+    {
+        <div class="alert alert-danger">
+            @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+            {
+                <div>@error.ErrorMessage</div>
+            }
+        </div>
+    }
+
+    <form method="post">
+        @for (int i = 0; i < Model.Detalles.Count; i++)
+        {
+            var tipo = Model.Detalles[i].Tipo;
+            var cantidadTipo = Model.Detalles.Count(d => d.Tipo == tipo);
+            var indiceTipo = Model.Detalles
+            .Where((d, idx) => idx <= i && d.Tipo == tipo)
+            .Count();
+
+            <div class="card mb-4">
+                <div class="card-header">
+                    <strong>
+                        @tipo @(cantidadTipo > 1 ? indiceTipo.ToString() : ""):
+                    </strong>
+                </div>
+                <div class="card-body">
+                    <div class="row g-3">
+                        <div class="col-md-3">
+                            <select asp-for="Detalles[@i].Genero" class="form-select" required>
+                                <option value="">Género*</option>
+                                <option value="M">Masculino</option>
+                                <option value="F">Femenino</option>
+                                <option value="O">Otro</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <input asp-for="Detalles[@i].Nombre" class="form-control" placeholder="Nombre*" required />
+                        </div>
+                        <div class="col-md-3">
+                            <input asp-for="Detalles[@i].Apellido" class="form-control" placeholder="Apellido*" required />
+                        </div>
+                        <div class="col-md-3">
+                            <input asp-for="Detalles[@i].NumeroDocumento" class="form-control" placeholder="N° Documento*" required />
+                        </div>
+                        <div class="col-md-3">
+                            <input asp-for="Detalles[@i].Nacionalidad" class="form-control" placeholder="Nacionalidad*" required />
+                        </div>
+                        <input type="hidden" asp-for="Detalles[@i].Tipo" />
+                    </div>
+                    </div>
+                    <div class="row g-3 mt-3">
+                        <div class="col-md-6">
+                            <label class="form-label">Fecha de nacimiento*</label>
+                            <div class="row g-2">
+                                <div class="col">
+                                    <select asp-for="Detalles[@i].DiaNacimiento" class="form-select" required>
+                                        <option value="">Día</option>
+                                        @for (int d = 1; d <= 31; d++)
+                                        {
+                                            <option value="@d">@d</option>
+                                        }
+                                    </select>
+                                </div>
+                                <div class="col">
+                                    <select asp-for="Detalles[@i].MesNacimiento" class="form-select" required>
+                                        <option value="">Mes</option>
+                                        @for (int m = 1; m <= 12; m++)
+                                        {
+                                            <option value="@m">@System.Globalization.CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(m)</option>
+                                        }
+                                    </select>
+                                </div>
+                                <div class="col">
+                                    <select asp-for="Detalles[@i].AnioNacimiento" class="form-select" required>
+                                        <option value="">Año</option>
+                                        @for (int a = DateTime.Now.Year; a >= 1920; a--)
+                                        {
+                                            <option value="@a">@a</option>
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        }
+
+        <div class="card mb-4">
+            <div class="card-header">
+                <strong>Datos del titular de la reserva</strong>
+            </div>
+            <div class="card-body">
+                <div class="row g-3">
+                    <div class="col-md-4">
+                        <input asp-for="TitularNombre" class="form-control" placeholder="Nombre completo*" required />
+                    </div>
+                    <div class="col-md-4">
+                        <input asp-for="TitularTelefono" class="form-control" placeholder="Teléfono*" required />
+                    </div>
+                    <div class="col-md-4">
+                        <input asp-for="TitularCorreo" class="form-control" placeholder="Correo electrónico*" required />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-end">
+            <button type="submit" class="btn btn-primary">Continuar</button>
+        </div>
+    </form>
+</div>

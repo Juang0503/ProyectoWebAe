@@ -1,0 +1,110 @@
+﻿@model ProyectoAerolineaWeb.Models.PaymentViewModel
+
+@{
+    ViewData["Title"] = "Método de Pago";
+    var meses = Enumerable.Range(1, 12)
+        .Select(m => new SelectListItem { Value = m.ToString(), Text = m.ToString("D2") }).ToList();
+    var anioActual = DateTime.Now.Year;
+    var anios = Enumerable.Range(anioActual, 12)
+        .Select(a => new SelectListItem { Value = a.ToString(), Text = a.ToString() }).ToList();
+}
+
+<div class="container mt-5" style="max-width: 500px;">
+    <div class="card shadow">
+        <div class="card-header bg-primary text-white text-center">
+            <h4 class="mb-0">Método de Pago</h4>
+        </div>
+        <div class="card-body">
+
+            @* Mensaje de éxito *@
+            @if (TempData["Success"] != null)
+            {
+                <div class="alert alert-success">
+                    @TempData["Success"]
+                </div>
+            }
+
+            @* Detalle de pasajeros y total *@
+            @if (Model.Pasajeros != null && Model.Pasajeros.Any())
+            {
+                <div class="mb-4">
+                    <h5>Detalle de Pasajeros</h5>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Asiento</th>
+                                <th>Tarifa</th>
+                                <th>Valor a Pagar</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var p in Model.Pasajeros)
+                            {
+                                <tr>
+                                    <td>@p.Nombre</td>
+                                    <td>@p.Asiento</td>
+                                    <td>@p.Tarifa.ToString("C")</td>
+                                    <td>@p.Valor.ToString("C")</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                    <div class="text-end fw-bold">
+                        Total: @Model.Total.ToString("C")
+                    </div>
+                </div>
+            }
+
+            <form asp-action="Index" method="post" autocomplete="off">
+                <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+
+                <div class="mb-3">
+                    <label asp-for="CardNumber" class="form-label"></label>
+                    <input asp-for="CardNumber" class="form-control" maxlength="19" placeholder="Ej: 4111 1111 1111 1111" />
+                    <span asp-validation-for="CardNumber" class="text-danger"></span>
+                    <small class="form-text text-muted">Solo Visa (empieza con 4) o MasterCard (empieza con 5).</small>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="CardHolder" class="form-label"></label>
+                    <input asp-for="CardHolder" class="form-control" placeholder="Nombre como aparece en la tarjeta" />
+                    <span asp-validation-for="CardHolder" class="text-danger"></span>
+                </div>
+                <div class="row mb-3">
+                    <div class="col">
+                        <label asp-for="ExpMonth" class="form-label"></label>
+                        <select asp-for="ExpMonth" class="form-select">
+                            <option value="">Mes</option>
+                            @foreach (var mes in meses)
+                            {
+                                <option value="@mes.Value">@mes.Text</option>
+                            }
+                        </select>
+                        <span asp-validation-for="ExpMonth" class="text-danger"></span>
+                    </div>
+                    <div class="col">
+                        <label asp-for="ExpYear" class="form-label"></label>
+                        <select asp-for="ExpYear" class="form-select">
+                            <option value="">Año</option>
+                            @foreach (var anio in anios)
+                            {
+                                <option value="@anio.Value">@anio.Text</option>
+                            }
+                        </select>
+                        <span asp-validation-for="ExpYear" class="text-danger"></span>
+                    </div>
+                    <div class="col">
+                        <label asp-for="CVV" class="form-label"></label>
+                        <input asp-for="CVV" class="form-control" maxlength="4" placeholder="CVV" />
+                        <span asp-validation-for="CVV" class="text-danger"></span>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-success w-100">Pagar</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

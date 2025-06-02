@@ -1,0 +1,86 @@
+﻿@{
+    var horarios = ViewBag.Horarios as IEnumerable<ProyectoAerolineaWeb.Models.HorarioVuelo>;
+    var origen = ViewBag.Origen as string ?? "";
+    var destino = ViewBag.Destino as string ?? "";
+    var fechaIda = ViewBag.FechaIda as string ?? "";
+    var pasajeros = ViewBag.TotalPasajeros ?? 1;
+}
+
+<!-- Cabecera -->
+<div class="container-fluid bg-white py-3 border-bottom">
+    <div class="d-flex justify-content-between align-items-center">
+        <div>
+            <img src="/img/avianca-logo.png" alt="Avianca" style="height:40px;">
+            <span class="fw-bold ms-3">@origen a @destino</span>
+        </div>
+        <div>
+            <span class="me-3"><i class="bi bi-calendar"></i> @fechaIda</span>
+            <span class="me-3"><i class="bi bi-person"></i> @pasajeros Adulto(s)</span>
+            <a href="/Home/Index" class="btn btn-link">Editar</a>
+        </div>
+    </div>
+</div>
+
+<!-- Selector de fechas (simulado) -->
+<div class="container my-4">
+    <div class="d-flex justify-content-center gap-3">
+        @for (int i = -2; i <= 4; i++)
+        {
+            var fecha = DateTime.Parse(fechaIda).AddDays(i);
+            var precio = horarios?.OrderBy(h => h.Precio).FirstOrDefault()?.Precio ?? 0;
+            <div class="text-center px-3 py-2 rounded @((i == 0) ? "border border-success bg-light" : "")" style="min-width:120px;">
+                <div class="fw-bold">@fecha:ddd dd MMM.</div>
+                <div>COP @precio.ToString("N0")</div>
+            </div>
+        }
+    </div>
+</div>
+
+<!-- Lista de horarios -->
+<div class="container">
+    @if (horarios != null && horarios.Any())
+    {
+        foreach (var horario in horarios)
+        {
+            var duracion = (horario.HoraLlegada - horario.HoraSalida).Duration();
+            <div class="bg-white rounded shadow-sm mb-4 p-4 d-flex align-items-center justify-content-between" style="min-height:120px;">
+                <div class="text-center">
+                    <div class="fs-2 fw-bold">@horario.HoraSalida.ToString(@"hh\:mm")</div>
+                    <div class="text-muted">@horario.Vuelo.CiudadOrigen.Nombre</div>
+                </div>
+                <div class="flex-grow-1 mx-4">
+                    <div class="d-flex align-items-center">
+                        <span class="mx-2">|</span>
+                        <span>@duracion.Hours h @duracion.Minutes m</span>
+                    </div>
+                    <div class="small text-muted mt-2">Volando con Leo</div>
+                </div>
+                <div class="text-center">
+                    <div class="fs-2 fw-bold">@horario.HoraLlegada.ToString(@"hh\:mm")</div>
+                    <div class="text-muted">@horario.Vuelo.CiudadDestino.Nombre</div>
+                </div>
+                <div class="text-end ms-4">
+                    <div class="fw-bold fs-4">COP @horario.Precio.ToString("N0")</div>
+                    <button class="btn btn-success mt-2"
+                            onclick="location.href='@Url.Action("Index", "Tarifas", new {
+               horarioVueloId = horario.Id,
+               origen = origen,
+               destino = destino,
+               fechaIda = fechaIda,
+               pasajeros = pasajeros,
+               adultos = ViewBag.Adultos,
+               ninos = ViewBag.Ninos,
+               jovenes = ViewBag.Jovenes,
+               bebes = ViewBag.Bebes
+           })'">
+                        Seleccionar
+                    </button>
+                </div>
+            </div>
+        }
+    }
+    else
+    {
+        <div class="alert alert-warning text-center">Leo no viaja a esa hora.</div>
+    }
+</div>

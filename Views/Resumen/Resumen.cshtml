@@ -1,0 +1,64 @@
+﻿@model ResumenModel
+@{
+    ViewData["Title"] = "Resumen de compra";
+    var precioTotal = Model.TarifaPrecio * Model.Pasajeros;
+}
+
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-md-7 col-lg-6">
+            <div class="card shadow-lg border-0">
+                <div class="card-header bg-primary text-white text-center">
+                    <h3 class="mb-0">Resumen de tu compra</h3>
+                </div>
+                <div class="card-body">
+                    <ul class="list-group list-group-flush mb-4">
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <span><i class="bi bi-geo-alt-fill me-2 text-danger"></i><strong>Origen:</strong></span>
+                            <span>@Model.Origen</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <span><i class="bi bi-flag-fill me-2 text-success"></i><strong>Destino:</strong></span>
+                            <span>@Model.Destino</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <span><i class="bi bi-calendar-event me-2 text-info"></i><strong>Fecha Ida:</strong></span>
+                            <span>@Model.FechaIda</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <span><i class="bi bi-people-fill me-2 text-secondary"></i><strong>Pasajeros:</strong></span>
+                            <span>@Model.Pasajeros</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <span><i class="bi bi-ticket-perforated-fill me-2 text-warning"></i><strong>Tarifa:</strong></span>
+                            <span class="text-capitalize">@Model.TarifaNombre</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <span><i class="bi bi-cash-coin me-2 text-primary"></i><strong>Precio unitario:</strong></span>
+                            <span>COP @Model.TarifaPrecio.ToString("N0")</span>
+                        </li>
+                    </ul>
+                    <div class="text-center">
+                        <div class="fw-bold fs-3 text-success mb-1">
+                            COP @precioTotal.ToString("N0")
+                        </div>
+                        <div class="small text-muted">
+                            Precio total (@Model.Pasajeros x COP @Model.TarifaPrecio.ToString("N0"))
+                        </div>
+                    </div>
+                    <div class="text-center mt-4">
+                        <a asp-controller="Pasajero"
+                           asp-action="DatosPasajero"
+                           asp-route-adultos="@Model.Adultos"
+                           asp-route-ninos="@Model.Ninos"
+                           asp-route-jovenes="@Model.Jovenes"
+                           asp-route-bebes="@Model.Bebes"
+                           class="btn btn-primary btn-lg">
+                            Continuar
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

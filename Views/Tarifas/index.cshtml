@@ -1,0 +1,54 @@
+﻿@using ProyectoAerolineaWeb.Models
+@model IEnumerable<Tarifa>
+@{
+    ViewData["Title"] = "Elige cómo quieres volar";
+    Func<string, string> fondo = nombre => nombre.ToLower() switch
+    {
+        "basic" => "bg-danger text-white",
+        "classic" => "bg-primary text-white",
+        "flex" => "bg-warning text-dark",
+        _ => "bg-light"
+    };
+}
+
+<h2 class="text-center my-4">Elige tu tarifa</h2>
+<div class="d-flex justify-content-center gap-4 flex-wrap">
+    @foreach (var tarifa in Model)
+    {
+        <div class="card p-4 shadow-sm @fondo(tarifa.Nombre) d-flex flex-column"
+             style="min-width:320px; max-width:340px; min-height:480px; border-radius:20px; border:2px solid @(tarifa.EsRecomendada ? "#6f42c1" : "#eee");">
+            <span class="fw-bold fs-3">@tarifa.Nombre</span>
+            @if (tarifa.EsRecomendada && tarifa.Nombre.ToLower() != "classic")
+            {
+                <span class="badge bg-light text-dark ms-2">Recomendada</span>
+            }
+            <ul class="list-unstyled mb-3">
+                @foreach (var beneficio in tarifa.Beneficios.Split(';'))
+                {
+                    <li>@beneficio</li>
+                }
+            </ul>
+            <div class="text-center mb-3 mt-auto">
+                <div class="fw-bold fs-4">COP @tarifa.Precio.ToString("N0")</div>
+                <div class="small">Precio por pasajero</div>
+            </div>
+            <div class="text-center mt-auto">
+                <a class="btn btn-dark"
+                   href="@Url.Action("Index", "Resumen", new {
+                       origen = ViewBag.Origen,
+                       destino = ViewBag.Destino,
+                       fechaIda = ViewBag.FechaIda,
+                       pasajeros = ViewBag.Pasajeros,
+                       tarifaNombre = tarifa.Nombre,
+                       tarifaPrecio = tarifa.Precio,
+                       adultos = ViewBag.Adultos,
+                       ninos = ViewBag.Ninos,
+                       jovenes = ViewBag.Jovenes,
+                       bebes = ViewBag.Bebes
+                   })">
+                    Seleccionar
+                </a>
+            </div>
+        </div>
+    }
+</div>
