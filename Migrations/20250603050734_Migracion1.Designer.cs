@@ -12,8 +12,8 @@ using ProyectoAerolineaWeb.Data;
 namespace ProyectoAerolineaWeb.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250602183251_aerolinea")]
-    partial class aerolinea
+    [Migration("20250603050734_Migracion1")]
+    partial class Migracion1
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -40,26 +40,6 @@ namespace ProyectoAerolineaWeb.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Ciudades");
-                });
-
-            modelBuilder.Entity("ProyectoAerolineaWeb.Models.ConfirmacionReserva", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("ContactoEmergencia")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("ServicioId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("ConfirmacionesReserva");
                 });
 
             modelBuilder.Entity("ProyectoAerolineaWeb.Models.DetallePasajero", b =>

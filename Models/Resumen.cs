@@ -10,13 +10,26 @@ public class ResumenModel : PageModel
     [BindProperty(SupportsGet = true)]
     public string FechaIda { get; set; }
     [BindProperty(SupportsGet = true)]
+    public string FechaVuelta { get; set; }
+
+    [BindProperty(SupportsGet = true)]
     public int Pasajeros { get; set; }
+
     [BindProperty(SupportsGet = true)]
     public string TarifaNombre { get; set; }
     [BindProperty(SupportsGet = true)]
     public decimal TarifaPrecio { get; set; }
 
-    // Agrega estas propiedades para los tipos de pasajero
+    [BindProperty(SupportsGet = true)]
+    public string TarifaNombreVuelta { get; set; }
+    [BindProperty(SupportsGet = true)]
+    public decimal TarifaPrecioVuelta { get; set; }
+
+    [BindProperty(SupportsGet = true)]
+    public decimal PrecioVueloIda { get; set; }         // NUEVO
+    [BindProperty(SupportsGet = true)]
+    public decimal PrecioVueloVuelta { get; set; }      // NUEVO
+
     [BindProperty(SupportsGet = true)]
     public int Adultos { get; set; }
     [BindProperty(SupportsGet = true)]

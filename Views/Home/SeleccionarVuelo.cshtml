@@ -1,8 +1,10 @@
 ﻿@{
-    var horarios = ViewBag.Horarios as IEnumerable<ProyectoAerolineaWeb.Models.HorarioVuelo>;
+    var horariosIda = ViewBag.HorariosIda as IEnumerable<ProyectoAerolineaWeb.Models.HorarioVuelo>;
+    var horariosVuelta = ViewBag.HorariosVuelta as IEnumerable<ProyectoAerolineaWeb.Models.HorarioVuelo>;
     var origen = ViewBag.Origen as string ?? "";
     var destino = ViewBag.Destino as string ?? "";
     var fechaIda = ViewBag.FechaIda as string ?? "";
+    var fechaVuelta = ViewBag.FechaVuelta as string ?? "";
     var pasajeros = ViewBag.TotalPasajeros ?? 1;
 }
 
@@ -15,72 +17,78 @@
         </div>
         <div>
             <span class="me-3"><i class="bi bi-calendar"></i> @fechaIda</span>
+            @if (!string.IsNullOrEmpty(fechaVuelta))
+            {
+                <span class="me-3"><i class="bi bi-calendar"></i> @fechaVuelta</span>
+            }
             <span class="me-3"><i class="bi bi-person"></i> @pasajeros Adulto(s)</span>
             <a href="/Home/Index" class="btn btn-link">Editar</a>
         </div>
     </div>
 </div>
 
-<!-- Selector de fechas (simulado) -->
-<div class="container my-4">
-    <div class="d-flex justify-content-center gap-3">
-        @for (int i = -2; i <= 4; i++)
+<form method="get" asp-controller="Tarifas" asp-action="Index">
+    <input type="hidden" name="origen" value="@origen" />
+    <input type="hidden" name="destino" value="@destino" />
+    <input type="hidden" name="fechaIda" value="@fechaIda" />
+    <input type="hidden" name="fechaVuelta" value="@fechaVuelta" />
+    <input type="hidden" name="pasajeros" value="@pasajeros" />
+    <input type="hidden" name="adultos" value="@ViewBag.Adultos" />
+    <input type="hidden" name="ninos" value="@ViewBag.Ninos" />
+    <input type="hidden" name="jovenes" value="@ViewBag.Jovenes" />
+    <input type="hidden" name="bebes" value="@ViewBag.Bebes" />
+
+    <!-- Selección de vuelo de ida -->
+    <div class="container my-4">
+        <h4>Selecciona tu vuelo de ida</h4>
+        @if (horariosIda != null && horariosIda.Any())
         {
-            var fecha = DateTime.Parse(fechaIda).AddDays(i);
-            var precio = horarios?.OrderBy(h => h.Precio).FirstOrDefault()?.Precio ?? 0;
-            <div class="text-center px-3 py-2 rounded @((i == 0) ? "border border-success bg-light" : "")" style="min-width:120px;">
-                <div class="fw-bold">@fecha:ddd dd MMM.</div>
-                <div>COP @precio.ToString("N0")</div>
-            </div>
+            foreach (var horario in horariosIda)
+            {
+                var duracion = (horario.HoraLlegada - horario.HoraSalida).Duration();
+                <div class="bg-white rounded shadow-sm mb-3 p-3 d-flex align-items-center justify-content-between">
+                    <div>
+                        <input class="form-check-input me-2" type="radio" name="horarioVueloIdIda" value="@horario.Id" required />
+                        <span class="fw-bold">@horario.Vuelo.NumeroVuelo</span>
+                        <span class="ms-2">@horario.HoraSalida.ToString(@"hh\:mm") - @horario.HoraLlegada.ToString(@"hh\:mm")</span>
+                        <span class="ms-2 text-muted">Duración: @duracion.Hours h @duracion.Minutes m</span>
+                    </div>
+                    <div class="text-end">
+                        <span class="fw-bold fs-5">COP @horario.Precio.ToString("N0")</span>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <div class="alert alert-warning">No hay vuelos de ida disponibles.</div>
         }
     </div>
-</div>
 
-<!-- Lista de horarios -->
-<div class="container">
-    @if (horarios != null && horarios.Any())
+    <!-- Selección de vuelo de vuelta -->
+    @if (horariosVuelta != null && horariosVuelta.Any())
     {
-        foreach (var horario in horarios)
-        {
-            var duracion = (horario.HoraLlegada - horario.HoraSalida).Duration();
-            <div class="bg-white rounded shadow-sm mb-4 p-4 d-flex align-items-center justify-content-between" style="min-height:120px;">
-                <div class="text-center">
-                    <div class="fs-2 fw-bold">@horario.HoraSalida.ToString(@"hh\:mm")</div>
-                    <div class="text-muted">@horario.Vuelo.CiudadOrigen.Nombre</div>
-                </div>
-                <div class="flex-grow-1 mx-4">
-                    <div class="d-flex align-items-center">
-                        <span class="mx-2">|</span>
-                        <span>@duracion.Hours h @duracion.Minutes m</span>
+        <div class="container my-4">
+            <h4>Selecciona tu vuelo de regreso</h4>
+            @foreach (var horario in horariosVuelta)
+            {
+                var duracion = (horario.HoraLlegada - horario.HoraSalida).Duration();
+                <div class="bg-white rounded shadow-sm mb-3 p-3 d-flex align-items-center justify-content-between">
+                    <div>
+                        <input class="form-check-input me-2" type="radio" name="horarioVueloIdVuelta" value="@horario.Id" required />
+                        <span class="fw-bold">@horario.Vuelo.NumeroVuelo</span>
+                        <span class="ms-2">@horario.HoraSalida.ToString(@"hh\:mm") - @horario.HoraLlegada.ToString(@"hh\:mm")</span>
+                        <span class="ms-2 text-muted">Duración: @duracion.Hours h @duracion.Minutes m</span>
                     </div>
-                    <div class="small text-muted mt-2">Volando con Leo</div>
+                    <div class="text-end">
+                        <span class="fw-bold fs-5">COP @horario.Precio.ToString("N0")</span>
+                    </div>
                 </div>
-                <div class="text-center">
-                    <div class="fs-2 fw-bold">@horario.HoraLlegada.ToString(@"hh\:mm")</div>
-                    <div class="text-muted">@horario.Vuelo.CiudadDestino.Nombre</div>
-                </div>
-                <div class="text-end ms-4">
-                    <div class="fw-bold fs-4">COP @horario.Precio.ToString("N0")</div>
-                    <button class="btn btn-success mt-2"
-                            onclick="location.href='@Url.Action("Index", "Tarifas", new {
-               horarioVueloId = horario.Id,
-               origen = origen,
-               destino = destino,
-               fechaIda = fechaIda,
-               pasajeros = pasajeros,
-               adultos = ViewBag.Adultos,
-               ninos = ViewBag.Ninos,
-               jovenes = ViewBag.Jovenes,
-               bebes = ViewBag.Bebes
-           })'">
-                        Seleccionar
-                    </button>
-                </div>
-            </div>
-        }
+            }
+        </div>
     }
-    else
-    {
-        <div class="alert alert-warning text-center">Leo no viaja a esa hora.</div>
-    }
-</div>
+
+    <div class="container my-4 text-end">
+        <button type="submit" class="btn btn-success">Continuar</button>
+    </div>
+</form>

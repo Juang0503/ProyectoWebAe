@@ -13,7 +13,6 @@ namespace ProyectoAerolineaWeb.Data
         public DbSet<Ciudad> Ciudades { get; set; }
         public DbSet<Vuelo> Vuelos { get; set; }
         public DbSet<Tarifa> Tarifas { get; set; }
-        public DbSet<ConfirmacionReserva> ConfirmacionesReserva { get; set; }
         public DbSet<DetallePasajero> DetallesPasajero { get; set; }
         public DbSet<HorarioVuelo> HorariosVuelo { get; set; }
 
@@ -56,7 +55,7 @@ namespace ProyectoAerolineaWeb.Data
                 SaveChanges();
             }
 
-            // 2. Vuelos (solo ida, rutas originales)
+            // 2. Vuelos (ida y vuelta)
             if (!Vuelos.Any())
             {
                 var bogota = Ciudades.First(c => c.Nombre == "Bogotá");
@@ -74,6 +73,7 @@ namespace ProyectoAerolineaWeb.Data
 
                 foreach (var fecha in fechas)
                 {
+                    // Vuelos de ida
                     Vuelos.AddRange(
                         new Vuelo
                         {
@@ -113,6 +113,54 @@ namespace ProyectoAerolineaWeb.Data
                             NumeroVuelo = $"CHN-CNC-{fecha:yyyyMMdd}",
                             CiudadOrigenId = china.Id,
                             CiudadDestinoId = conchinchina.Id,
+                            Fecha = fecha,
+                            AsientosDisponibles = 100,
+                            StockMaletas = 50,
+                            StockComidas = 100,
+                            StockMascotas = 5
+                        }
+                    );
+
+                    // Vuelos de vuelta (invirtiendo origen y destino)
+                    Vuelos.AddRange(
+                        new Vuelo
+                        {
+                            NumeroVuelo = $"CLO-BOG-{fecha:yyyyMMdd}",
+                            CiudadOrigenId = cali.Id,
+                            CiudadDestinoId = bogota.Id,
+                            Fecha = fecha,
+                            AsientosDisponibles = 100,
+                            StockMaletas = 50,
+                            StockComidas = 100,
+                            StockMascotas = 5
+                        },
+                        new Vuelo
+                        {
+                            NumeroVuelo = $"CHO-MZL-{fecha:yyyyMMdd}",
+                            CiudadOrigenId = choco.Id,
+                            CiudadDestinoId = manizales.Id,
+                            Fecha = fecha,
+                            AsientosDisponibles = 100,
+                            StockMaletas = 50,
+                            StockComidas = 100,
+                            StockMascotas = 5
+                        },
+                        new Vuelo
+                        {
+                            NumeroVuelo = $"AFG-PER-{fecha:yyyyMMdd}",
+                            CiudadOrigenId = afganistan.Id,
+                            CiudadDestinoId = peru.Id,
+                            Fecha = fecha,
+                            AsientosDisponibles = 100,
+                            StockMaletas = 50,
+                            StockComidas = 100,
+                            StockMascotas = 5
+                        },
+                        new Vuelo
+                        {
+                            NumeroVuelo = $"CNC-CHN-{fecha:yyyyMMdd}",
+                            CiudadOrigenId = conchinchina.Id,
+                            CiudadDestinoId = china.Id,
                             Fecha = fecha,
                             AsientosDisponibles = 100,
                             StockMaletas = 50,
