@@ -1,26 +1,40 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ProyectoAerolineaWeb.Models;
+using ProyectoAerolineaWeb.Data;
+using System.Linq;
 
 public class ResumenController : Controller
 {
+    private readonly ApplicationDbContext _context;
+
+    public ResumenController(ApplicationDbContext context)
+    {
+        _context = context;
+    }
+
     [HttpGet]
     public IActionResult Index(
-        string origen,
-        string destino,
-        string fechaIda,
-        string fechaVuelta,
-        int pasajeros,
-        string tarifaNombre,
-        decimal tarifaPrecio,
-        string tarifaNombreVuelta,
-        decimal tarifaPrecioVuelta,
-        decimal precioVueloIda,
-        decimal precioVueloVuelta,
-        int adultos,
-        int ninos,
-        int jovenes,
-        int bebes)
+    string origen,
+    string destino,
+    string fechaIda,
+    string fechaVuelta,
+    int pasajeros,
+    string tarifaNombre,
+    decimal tarifaPrecio,
+    string tarifaNombreVuelta,
+    decimal tarifaPrecioVuelta,
+    int horarioVueloIdIda,
+    int? horarioVueloIdVuelta,
+    int adultos,
+    int ninos,
+    int jovenes,
+    int bebes)
     {
+        var horarioIda = _context.HorariosVuelo.FirstOrDefault(h => h.Id == horarioVueloIdIda);
+        var horarioVuelta = horarioVueloIdVuelta.HasValue
+            ? _context.HorariosVuelo.FirstOrDefault(h => h.Id == horarioVueloIdVuelta.Value)
+            : null;
+
         var model = new ResumenModel
         {
             Origen = origen,
@@ -32,8 +46,8 @@ public class ResumenController : Controller
             TarifaPrecio = tarifaPrecio,
             TarifaNombreVuelta = tarifaNombreVuelta,
             TarifaPrecioVuelta = tarifaPrecioVuelta,
-            PrecioVueloIda = precioVueloIda,
-            PrecioVueloVuelta = precioVueloVuelta,
+            PrecioVueloIda = horarioIda?.Precio ?? 0,
+            PrecioVueloVuelta = horarioVuelta?.Precio ?? 0,
             Adultos = adultos,
             Ninos = ninos,
             Jovenes = jovenes,

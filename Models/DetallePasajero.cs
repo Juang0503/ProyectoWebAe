@@ -3,7 +3,6 @@
     public class DetallePasajero
     {
         public int Id { get; set; }
-        public int PasajerosId { get; set; }
         public string Nombre { get; set; }
         public string Apellido { get; set; }
         public DateTime FechaNacimiento { get; set; }

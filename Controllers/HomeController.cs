@@ -53,7 +53,6 @@ namespace ProyectoAerolineaWeb.Controllers
     int origen, int destino, DateTime fechaIda, DateTime? fechaVuelta,
     int adultos, int ninos, int bebes, int jovenes)
         {
-            // ... (validaciones existentes)
 
             int totalPasajeros = adultos + ninos + bebes + jovenes;
 

@@ -1,28 +1,7 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\User\\Downloads\\ProyectoWebAe\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{C93151B8-827B-4875-ECD1-4E44BFC7B282}|ProyectoAerolineaWeb.csproj|c:\\users\\user\\downloads\\proyectowebae\\views\\payment\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{C93151B8-827B-4875-ECD1-4E44BFC7B282}|ProyectoAerolineaWeb.csproj|solutionrelative:views\\payment\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C93151B8-827B-4875-ECD1-4E44BFC7B282}|ProyectoAerolineaWeb.csproj|c:\\users\\user\\downloads\\proyectowebae\\views\\resumen\\resumen.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{C93151B8-827B-4875-ECD1-4E44BFC7B282}|ProyectoAerolineaWeb.csproj|solutionrelative:views\\resumen\\resumen.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C93151B8-827B-4875-ECD1-4E44BFC7B282}|ProyectoAerolineaWeb.csproj|c:\\users\\user\\downloads\\proyectowebae\\views\\seatmap\\seatmap.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{C93151B8-827B-4875-ECD1-4E44BFC7B282}|ProyectoAerolineaWeb.csproj|solutionrelative:views\\seatmap\\seatmap.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C93151B8-827B-4875-ECD1-4E44BFC7B282}|ProyectoAerolineaWeb.csproj|c:\\users\\user\\downloads\\proyectowebae\\views\\pasajero\\datospasajero.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{C93151B8-827B-4875-ECD1-4E44BFC7B282}|ProyectoAerolineaWeb.csproj|solutionrelative:views\\pasajero\\datospasajero.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C93151B8-827B-4875-ECD1-4E44BFC7B282}|ProyectoAerolineaWeb.csproj|c:\\users\\user\\downloads\\proyectowebae\\views\\tarifas\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{C93151B8-827B-4875-ECD1-4E44BFC7B282}|ProyectoAerolineaWeb.csproj|solutionrelative:views\\tarifas\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    }
-  ],
+  "WorkspaceRootPath": "C:\\Users\\User\\Documents\\Universidad\\Programacion\\WEB II entrega 3\\ProyectoWebAe\\",
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -30,72 +9,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": -1,
           "Children": [
             {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\User\\Downloads\\ProyectoWebAe\\Views\\Payment\\Index.cshtml",
-              "RelativeDocumentMoniker": "Views\\Payment\\Index.cshtml",
-              "ToolTip": "C:\\Users\\User\\Downloads\\ProyectoWebAe\\Views\\Payment\\Index.cshtml",
-              "RelativeToolTip": "Views\\Payment\\Index.cshtml",
-              "ViewState": "AgIAACQAAAAAAAAAAAAAADIAAAA3AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-06-04T04:54:06.362Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "SeatMap.cshtml",
-              "DocumentMoniker": "C:\\Users\\User\\Downloads\\ProyectoWebAe\\Views\\SeatMap\\SeatMap.cshtml",
-              "RelativeDocumentMoniker": "Views\\SeatMap\\SeatMap.cshtml",
-              "ToolTip": "C:\\Users\\User\\Downloads\\ProyectoWebAe\\Views\\SeatMap\\SeatMap.cshtml",
-              "RelativeToolTip": "Views\\SeatMap\\SeatMap.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAbAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-06-04T04:39:31.134Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "DatosPasajero.cshtml",
-              "DocumentMoniker": "C:\\Users\\User\\Downloads\\ProyectoWebAe\\Views\\Pasajero\\DatosPasajero.cshtml",
-              "RelativeDocumentMoniker": "Views\\Pasajero\\DatosPasajero.cshtml",
-              "ToolTip": "C:\\Users\\User\\Downloads\\ProyectoWebAe\\Views\\Pasajero\\DatosPasajero.cshtml",
-              "RelativeToolTip": "Views\\Pasajero\\DatosPasajero.cshtml",
-              "ViewState": "AgIAAEsAAAAAAAAAAAAAAGYAAAAqAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-06-04T04:36:13.952Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Resumen.cshtml",
-              "DocumentMoniker": "C:\\Users\\User\\Downloads\\ProyectoWebAe\\Views\\Resumen\\Resumen.cshtml",
-              "RelativeDocumentMoniker": "Views\\Resumen\\Resumen.cshtml",
-              "ToolTip": "C:\\Users\\User\\Downloads\\ProyectoWebAe\\Views\\Resumen\\Resumen.cshtml",
-              "RelativeToolTip": "Views\\Resumen\\Resumen.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-06-04T04:34:32.684Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "index.cshtml",
-              "DocumentMoniker": "C:\\Users\\User\\Downloads\\ProyectoWebAe\\Views\\Tarifas\\index.cshtml",
-              "RelativeDocumentMoniker": "Views\\Tarifas\\index.cshtml",
-              "ToolTip": "C:\\Users\\User\\Downloads\\ProyectoWebAe\\Views\\Tarifas\\index.cshtml",
-              "RelativeToolTip": "Views\\Tarifas\\index.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAuAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-06-04T04:28:27.092Z",
-              "EditorCaption": ""
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
             }
           ]
         }

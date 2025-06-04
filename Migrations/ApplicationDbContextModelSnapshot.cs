@@ -83,9 +83,6 @@ namespace ProyectoAerolineaWeb.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("PasajerosId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Tipo")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");

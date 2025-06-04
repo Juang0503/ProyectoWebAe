@@ -25,10 +25,11 @@ public class ResumenModel : PageModel
     [BindProperty(SupportsGet = true)]
     public decimal TarifaPrecioVuelta { get; set; }
 
+    // Precios de los vuelos seleccionados
     [BindProperty(SupportsGet = true)]
-    public decimal PrecioVueloIda { get; set; }         // NUEVO
+    public decimal PrecioVueloIda { get; set; }
     [BindProperty(SupportsGet = true)]
-    public decimal PrecioVueloVuelta { get; set; }      // NUEVO
+    public decimal PrecioVueloVuelta { get; set; }
 
     [BindProperty(SupportsGet = true)]
     public int Adultos { get; set; }
@@ -41,6 +42,6 @@ public class ResumenModel : PageModel
 
     public void OnGet()
     {
-        // Aquí puedes cargar más datos si lo necesitas
+        // para carar más datos si lo necesitamos
     }
 }

@@ -12,8 +12,8 @@
     var ninos = ViewBag.Ninos ?? 0;
     var jovenes = ViewBag.Jovenes ?? 0;
     var bebes = ViewBag.Bebes ?? 0;
-    var precioVueloIda = ViewBag.PrecioVueloIda ?? 0m;
-    var precioVueloVuelta = ViewBag.PrecioVueloVuelta ?? 0m;
+    var horarioVueloIdIda = ViewBag.HorarioVueloIdIda ?? 0;
+    var horarioVueloIdVuelta = ViewBag.HorarioVueloIdVuelta;
     Func<string, string> fondo = nombre => nombre.ToLower() switch
     {
         "basic" => "bg-danger text-white",
@@ -24,7 +24,6 @@
 }
 <video class="video-fondoinicio" autoplay muted loop playsinline>
     <source src="~/mp4/loginregister.mp4" type="video/mp4">
-    Tu navegador no soporta video HTML5.
 </video>
 
 <form method="get" asp-controller="Resumen" asp-action="Index" id="tarifasForm">
@@ -37,8 +36,8 @@
     <input type="hidden" name="ninos" value="@ninos" />
     <input type="hidden" name="jovenes" value="@jovenes" />
     <input type="hidden" name="bebes" value="@bebes" />
-    <input type="hidden" name="precioVueloIda" value="@precioVueloIda" />
-    <input type="hidden" name="precioVueloVuelta" value="@precioVueloVuelta" />
+    <input type="hidden" name="horarioVueloIdIda" value="@horarioVueloIdIda" />
+    <input type="hidden" name="horarioVueloIdVuelta" value="@horarioVueloIdVuelta" />
 
     <input type="hidden" name="tarifaNombre" id="tarifaNombre" />
     <input type="hidden" name="tarifaPrecio" id="tarifaPrecio" />

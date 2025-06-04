@@ -1706,7 +1706,6 @@ C:\Users\User\Documents\Universidad\Programacion\WEB II entrega 3\ProyectoWebAe\
 C:\Users\User\Documents\Universidad\Programacion\WEB II entrega 3\ProyectoWebAe\obj\Debug\net9.0\scopedcss\projectbundle\ProyectoAerolineaWeb.bundle.scp.css
 C:\Users\User\Documents\Universidad\Programacion\WEB II entrega 3\ProyectoWebAe\obj\Debug\net9.0\compressed\s14hmx9t41-9ky6lzebs1.gz
 C:\Users\User\Documents\Universidad\Programacion\WEB II entrega 3\ProyectoWebAe\obj\Debug\net9.0\compressed\h6hdfjykz5-7gc082oicu.gz
-C:\Users\User\Documents\Universidad\Programacion\WEB II entrega 3\ProyectoWebAe\obj\Debug\net9.0\compressed\80kiye1zqq-at09vr6h16.gz
 C:\Users\User\Documents\Universidad\Programacion\WEB II entrega 3\ProyectoWebAe\obj\Debug\net9.0\compressed\bzxs7mh4pb-61n19gt1b8.gz
 C:\Users\User\Documents\Universidad\Programacion\WEB II entrega 3\ProyectoWebAe\obj\Debug\net9.0\compressed\cz5z2wwwrp-xtxxf3hu2r.gz
 C:\Users\User\Documents\Universidad\Programacion\WEB II entrega 3\ProyectoWebAe\obj\Debug\net9.0\compressed\qc8kyon6jz-t1cqhe9u97.gz
@@ -1785,7 +1784,6 @@ C:\Users\User\Documents\Universidad\Programacion\WEB II entrega 3\ProyectoWebAe\
 C:\Users\User\Documents\Universidad\Programacion\WEB II entrega 3\ProyectoWebAe\obj\Debug\net9.0\ProyectoAerolineaWeb.pdb
 C:\Users\User\Documents\Universidad\Programacion\WEB II entrega 3\ProyectoWebAe\obj\Debug\net9.0\ProyectoAerolineaWeb.genruntimeconfig.cache
 C:\Users\User\Documents\Universidad\Programacion\WEB II entrega 3\ProyectoWebAe\obj\Debug\net9.0\ref\ProyectoAerolineaWeb.dll
-C:\Users\User\Documents\Universidad\Programacion\WEB II entrega 3\ProyectoWebAe\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt
 C:\Users\User\Downloads\ProyectoWebAe\bin\Debug\net9.0\wwwroot\mp4\3593-172488287.mp4
 C:\Users\User\Downloads\ProyectoWebAe\bin\Debug\net9.0\wwwroot\mp4\Inicio.mp4
 C:\Users\User\Downloads\ProyectoWebAe\bin\Debug\net9.0\wwwroot\mp4\servicio2.mp4
@@ -2024,3 +2022,4 @@ C:\Users\User\Downloads\ProyectoWebAe\obj\Debug\net9.0\ProyectoAerolineaWeb.genr
 C:\Users\User\Downloads\ProyectoWebAe\obj\Debug\net9.0\ref\ProyectoAerolineaWeb.dll
 C:\Users\User\Downloads\ProyectoWebAe\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt
 C:\Users\User\Downloads\ProyectoWebAe\obj\Debug\net9.0\compressed\80kiye1zqq-is7i9n9bqc.gz
+C:\Users\User\Documents\Universidad\Programacion\WEB II entrega 3\ProyectoWebAe\obj\Debug\net9.0\compressed\80kiye1zqq-is7i9n9bqc.gz

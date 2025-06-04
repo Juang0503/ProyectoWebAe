@@ -17,24 +17,22 @@ public class TarifasController : Controller
 
     [HttpGet]
     public async Task<IActionResult> Index(
-        int horarioVueloIdIda,
-        int? horarioVueloIdVuelta, // Puede ser null si solo es ida
-        string origen,
-        string destino,
-        string fechaIda,
-        string fechaVuelta,
-        int pasajeros,
-        int adultos = 1,
-        int ninos = 0,
-        int jovenes = 0,
-        int bebes = 0)
+    int horarioVueloIdIda,
+    int? horarioVueloIdVuelta,
+    string origen,
+    string destino,
+    string fechaIda,
+    string fechaVuelta,
+    int pasajeros,
+    int adultos = 1,
+    int ninos = 0,
+    int jovenes = 0,
+    int bebes = 0)
     {
-        // Tarifas para el vuelo de ida
         var tarifasIda = await _context.Tarifas
             .Where(t => t.HorarioVueloId == horarioVueloIdIda)
             .ToListAsync();
 
-        // Tarifas para el vuelo de vuelta (si aplica)
         List<Tarifa> tarifasVuelta = new();
         if (horarioVueloIdVuelta.HasValue)
         {
@@ -42,6 +40,12 @@ public class TarifasController : Controller
                 .Where(t => t.HorarioVueloId == horarioVueloIdVuelta.Value)
                 .ToListAsync();
         }
+
+        // Obtener precios de los vuelos seleccionados
+        var precioVueloIda = (await _context.HorariosVuelo.FindAsync(horarioVueloIdIda))?.Precio ?? 0;
+        decimal precioVueloVuelta = 0;
+        if (horarioVueloIdVuelta.HasValue)
+            precioVueloVuelta = (await _context.HorariosVuelo.FindAsync(horarioVueloIdVuelta.Value))?.Precio ?? 0;
 
         ViewBag.HorarioVueloIdIda = horarioVueloIdIda;
         ViewBag.HorarioVueloIdVuelta = horarioVueloIdVuelta;
@@ -54,6 +58,8 @@ public class TarifasController : Controller
         ViewBag.Ninos = ninos;
         ViewBag.Jovenes = jovenes;
         ViewBag.Bebes = bebes;
+        ViewBag.PrecioVueloIda = precioVueloIda;
+        ViewBag.PrecioVueloVuelta = precioVueloVuelta;
 
         ViewBag.TarifasIda = tarifasIda;
         ViewBag.TarifasVuelta = tarifasVuelta;

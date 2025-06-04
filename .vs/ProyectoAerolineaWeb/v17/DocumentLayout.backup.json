@@ -1,26 +1,62 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\User\\Downloads\\ProyectoWebAe\\",
+  "WorkspaceRootPath": "C:\\Users\\User\\Documents\\Universidad\\Programacion\\WEB II entrega 3\\ProyectoWebAe\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{C93151B8-827B-4875-ECD1-4E44BFC7B282}|ProyectoAerolineaWeb.csproj|c:\\users\\user\\downloads\\proyectowebae\\views\\payment\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{C93151B8-827B-4875-ECD1-4E44BFC7B282}|ProyectoAerolineaWeb.csproj|solutionrelative:views\\payment\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{C93151B8-827B-4875-ECD1-4E44BFC7B282}|ProyectoAerolineaWeb.csproj|c:\\users\\user\\documents\\universidad\\programacion\\web ii entrega 3\\proyectowebae\\controllers\\seatmapcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C93151B8-827B-4875-ECD1-4E44BFC7B282}|ProyectoAerolineaWeb.csproj|solutionrelative:controllers\\seatmapcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C93151B8-827B-4875-ECD1-4E44BFC7B282}|ProyectoAerolineaWeb.csproj|c:\\users\\user\\downloads\\proyectowebae\\views\\resumen\\resumen.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{C93151B8-827B-4875-ECD1-4E44BFC7B282}|ProyectoAerolineaWeb.csproj|c:\\users\\user\\documents\\universidad\\programacion\\web ii entrega 3\\proyectowebae\\controllers\\tarifascontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C93151B8-827B-4875-ECD1-4E44BFC7B282}|ProyectoAerolineaWeb.csproj|solutionrelative:controllers\\tarifascontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C93151B8-827B-4875-ECD1-4E44BFC7B282}|ProyectoAerolineaWeb.csproj|c:\\users\\user\\documents\\universidad\\programacion\\web ii entrega 3\\proyectowebae\\controllers\\resumencontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C93151B8-827B-4875-ECD1-4E44BFC7B282}|ProyectoAerolineaWeb.csproj|solutionrelative:controllers\\resumencontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C93151B8-827B-4875-ECD1-4E44BFC7B282}|ProyectoAerolineaWeb.csproj|c:\\users\\user\\documents\\universidad\\programacion\\web ii entrega 3\\proyectowebae\\controllers\\paymentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C93151B8-827B-4875-ECD1-4E44BFC7B282}|ProyectoAerolineaWeb.csproj|solutionrelative:controllers\\paymentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C93151B8-827B-4875-ECD1-4E44BFC7B282}|ProyectoAerolineaWeb.csproj|c:\\users\\user\\documents\\universidad\\programacion\\web ii entrega 3\\proyectowebae\\controllers\\pasajerocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C93151B8-827B-4875-ECD1-4E44BFC7B282}|ProyectoAerolineaWeb.csproj|solutionrelative:controllers\\pasajerocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C93151B8-827B-4875-ECD1-4E44BFC7B282}|ProyectoAerolineaWeb.csproj|c:\\users\\user\\documents\\universidad\\programacion\\web ii entrega 3\\proyectowebae\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C93151B8-827B-4875-ECD1-4E44BFC7B282}|ProyectoAerolineaWeb.csproj|solutionrelative:controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C93151B8-827B-4875-ECD1-4E44BFC7B282}|ProyectoAerolineaWeb.csproj|c:\\users\\user\\documents\\universidad\\programacion\\web ii entrega 3\\proyectowebae\\views\\resumen\\resumen.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{C93151B8-827B-4875-ECD1-4E44BFC7B282}|ProyectoAerolineaWeb.csproj|solutionrelative:views\\resumen\\resumen.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C93151B8-827B-4875-ECD1-4E44BFC7B282}|ProyectoAerolineaWeb.csproj|c:\\users\\user\\downloads\\proyectowebae\\views\\seatmap\\seatmap.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{C93151B8-827B-4875-ECD1-4E44BFC7B282}|ProyectoAerolineaWeb.csproj|c:\\users\\user\\documents\\universidad\\programacion\\web ii entrega 3\\proyectowebae\\views\\payment\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{C93151B8-827B-4875-ECD1-4E44BFC7B282}|ProyectoAerolineaWeb.csproj|solutionrelative:views\\payment\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C93151B8-827B-4875-ECD1-4E44BFC7B282}|ProyectoAerolineaWeb.csproj|c:\\users\\user\\documents\\universidad\\programacion\\web ii entrega 3\\proyectowebae\\views\\home\\seleccionarvuelo.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{C93151B8-827B-4875-ECD1-4E44BFC7B282}|ProyectoAerolineaWeb.csproj|solutionrelative:views\\home\\seleccionarvuelo.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C93151B8-827B-4875-ECD1-4E44BFC7B282}|ProyectoAerolineaWeb.csproj|c:\\users\\user\\documents\\universidad\\programacion\\web ii entrega 3\\proyectowebae\\models\\resumen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C93151B8-827B-4875-ECD1-4E44BFC7B282}|ProyectoAerolineaWeb.csproj|solutionrelative:models\\resumen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C93151B8-827B-4875-ECD1-4E44BFC7B282}|ProyectoAerolineaWeb.csproj|c:\\users\\user\\documents\\universidad\\programacion\\web ii entrega 3\\proyectowebae\\data\\applicationdbcontext .cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C93151B8-827B-4875-ECD1-4E44BFC7B282}|ProyectoAerolineaWeb.csproj|solutionrelative:data\\applicationdbcontext .cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C93151B8-827B-4875-ECD1-4E44BFC7B282}|ProyectoAerolineaWeb.csproj|c:\\users\\user\\documents\\universidad\\programacion\\web ii entrega 3\\proyectowebae\\views\\tarifas\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{C93151B8-827B-4875-ECD1-4E44BFC7B282}|ProyectoAerolineaWeb.csproj|solutionrelative:views\\tarifas\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C93151B8-827B-4875-ECD1-4E44BFC7B282}|ProyectoAerolineaWeb.csproj|c:\\users\\user\\documents\\universidad\\programacion\\web ii entrega 3\\proyectowebae\\views\\seatmap\\seatmap.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{C93151B8-827B-4875-ECD1-4E44BFC7B282}|ProyectoAerolineaWeb.csproj|solutionrelative:views\\seatmap\\seatmap.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C93151B8-827B-4875-ECD1-4E44BFC7B282}|ProyectoAerolineaWeb.csproj|c:\\users\\user\\downloads\\proyectowebae\\views\\pasajero\\datospasajero.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{C93151B8-827B-4875-ECD1-4E44BFC7B282}|ProyectoAerolineaWeb.csproj|c:\\users\\user\\documents\\universidad\\programacion\\web ii entrega 3\\proyectowebae\\views\\pasajero\\datospasajero.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{C93151B8-827B-4875-ECD1-4E44BFC7B282}|ProyectoAerolineaWeb.csproj|solutionrelative:views\\pasajero\\datospasajero.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C93151B8-827B-4875-ECD1-4E44BFC7B282}|ProyectoAerolineaWeb.csproj|c:\\users\\user\\downloads\\proyectowebae\\views\\tarifas\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{C93151B8-827B-4875-ECD1-4E44BFC7B282}|ProyectoAerolineaWeb.csproj|solutionrelative:views\\tarifas\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,69 +66,188 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "SeatMapController.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Documents\\Universidad\\Programacion\\WEB II entrega 3\\ProyectoWebAe\\Controllers\\SeatMapController.cs",
+              "RelativeDocumentMoniker": "Controllers\\SeatMapController.cs",
+              "ToolTip": "C:\\Users\\User\\Documents\\Universidad\\Programacion\\WEB II entrega 3\\ProyectoWebAe\\Controllers\\SeatMapController.cs",
+              "RelativeToolTip": "Controllers\\SeatMapController.cs",
+              "ViewState": "AgIAADwAAAAAAAAAAAAowFwAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-04T20:18:49.574Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "PaymentController.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Documents\\Universidad\\Programacion\\WEB II entrega 3\\ProyectoWebAe\\Controllers\\PaymentController.cs",
+              "RelativeDocumentMoniker": "Controllers\\PaymentController.cs",
+              "ToolTip": "C:\\Users\\User\\Documents\\Universidad\\Programacion\\WEB II entrega 3\\ProyectoWebAe\\Controllers\\PaymentController.cs",
+              "RelativeToolTip": "Controllers\\PaymentController.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-04T20:18:19.254Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "ApplicationDbContext .cs",
+              "DocumentMoniker": "C:\\Users\\User\\Documents\\Universidad\\Programacion\\WEB II entrega 3\\ProyectoWebAe\\Data\\ApplicationDbContext .cs",
+              "RelativeDocumentMoniker": "Data\\ApplicationDbContext .cs",
+              "ToolTip": "C:\\Users\\User\\Documents\\Universidad\\Programacion\\WEB II entrega 3\\ProyectoWebAe\\Data\\ApplicationDbContext .cs",
+              "RelativeToolTip": "Data\\ApplicationDbContext .cs",
+              "ViewState": "AgIAANkAAAAAAAAAAAAAANoAAAA4AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-04T20:01:25.419Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Resumen.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Documents\\Universidad\\Programacion\\WEB II entrega 3\\ProyectoWebAe\\Models\\Resumen.cs",
+              "RelativeDocumentMoniker": "Models\\Resumen.cs",
+              "ToolTip": "C:\\Users\\User\\Documents\\Universidad\\Programacion\\WEB II entrega 3\\ProyectoWebAe\\Models\\Resumen.cs",
+              "RelativeToolTip": "Models\\Resumen.cs",
+              "ViewState": "AgIAABUAAAAAAAAAAAAkwC4AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-04T19:57:01.998Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "TarifasController.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Documents\\Universidad\\Programacion\\WEB II entrega 3\\ProyectoWebAe\\Controllers\\TarifasController.cs",
+              "RelativeDocumentMoniker": "Controllers\\TarifasController.cs",
+              "ToolTip": "C:\\Users\\User\\Documents\\Universidad\\Programacion\\WEB II entrega 3\\ProyectoWebAe\\Controllers\\TarifasController.cs",
+              "RelativeToolTip": "Controllers\\TarifasController.cs",
+              "ViewState": "AgIAABUAAAAAAAAAAAAowEMAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-04T19:51:19.653Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "PasajeroController.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Documents\\Universidad\\Programacion\\WEB II entrega 3\\ProyectoWebAe\\Controllers\\PasajeroController.cs",
+              "RelativeDocumentMoniker": "Controllers\\PasajeroController.cs",
+              "ToolTip": "C:\\Users\\User\\Documents\\Universidad\\Programacion\\WEB II entrega 3\\ProyectoWebAe\\Controllers\\PasajeroController.cs",
+              "RelativeToolTip": "Controllers\\PasajeroController.cs",
+              "ViewState": "AgIAADEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-04T19:49:12.973Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Documents\\Universidad\\Programacion\\WEB II entrega 3\\ProyectoWebAe\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "Controllers\\HomeController.cs",
+              "ToolTip": "C:\\Users\\User\\Documents\\Universidad\\Programacion\\WEB II entrega 3\\ProyectoWebAe\\Controllers\\HomeController.cs*",
+              "RelativeToolTip": "Controllers\\HomeController.cs*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAGMAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-04T19:49:11.867Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "SeleccionarVuelo.cshtml",
+              "DocumentMoniker": "C:\\Users\\User\\Documents\\Universidad\\Programacion\\WEB II entrega 3\\ProyectoWebAe\\Views\\Home\\SeleccionarVuelo.cshtml",
+              "RelativeDocumentMoniker": "Views\\Home\\SeleccionarVuelo.cshtml",
+              "ToolTip": "C:\\Users\\User\\Documents\\Universidad\\Programacion\\WEB II entrega 3\\ProyectoWebAe\\Views\\Home\\SeleccionarVuelo.cshtml",
+              "RelativeToolTip": "Views\\Home\\SeleccionarVuelo.cshtml",
+              "ViewState": "AgIAACoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-04T19:49:05.327Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ResumenController.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Documents\\Universidad\\Programacion\\WEB II entrega 3\\ProyectoWebAe\\Controllers\\ResumenController.cs",
+              "RelativeDocumentMoniker": "Controllers\\ResumenController.cs",
+              "ToolTip": "C:\\Users\\User\\Documents\\Universidad\\Programacion\\WEB II entrega 3\\ProyectoWebAe\\Controllers\\ResumenController.cs",
+              "RelativeToolTip": "Controllers\\ResumenController.cs",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAowAIAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-04T19:46:01.968Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
               "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\User\\Downloads\\ProyectoWebAe\\Views\\Payment\\Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\User\\Documents\\Universidad\\Programacion\\WEB II entrega 3\\ProyectoWebAe\\Views\\Payment\\Index.cshtml",
               "RelativeDocumentMoniker": "Views\\Payment\\Index.cshtml",
-              "ToolTip": "C:\\Users\\User\\Downloads\\ProyectoWebAe\\Views\\Payment\\Index.cshtml",
+              "ToolTip": "C:\\Users\\User\\Documents\\Universidad\\Programacion\\WEB II entrega 3\\ProyectoWebAe\\Views\\Payment\\Index.cshtml",
               "RelativeToolTip": "Views\\Payment\\Index.cshtml",
-              "ViewState": "AgIAACQAAAAAAAAAAAAAADIAAAA3AAAAAAAAAA==",
+              "ViewState": "AgIAAEsAAAAAAAAAAAAAADIAAAA3AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-06-04T04:54:06.362Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 12,
               "Title": "SeatMap.cshtml",
-              "DocumentMoniker": "C:\\Users\\User\\Downloads\\ProyectoWebAe\\Views\\SeatMap\\SeatMap.cshtml",
+              "DocumentMoniker": "C:\\Users\\User\\Documents\\Universidad\\Programacion\\WEB II entrega 3\\ProyectoWebAe\\Views\\SeatMap\\SeatMap.cshtml",
               "RelativeDocumentMoniker": "Views\\SeatMap\\SeatMap.cshtml",
-              "ToolTip": "C:\\Users\\User\\Downloads\\ProyectoWebAe\\Views\\SeatMap\\SeatMap.cshtml",
+              "ToolTip": "C:\\Users\\User\\Documents\\Universidad\\Programacion\\WEB II entrega 3\\ProyectoWebAe\\Views\\SeatMap\\SeatMap.cshtml",
               "RelativeToolTip": "Views\\SeatMap\\SeatMap.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAbAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-06-04T04:39:31.134Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-04T04:39:31.134Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 13,
               "Title": "DatosPasajero.cshtml",
-              "DocumentMoniker": "C:\\Users\\User\\Downloads\\ProyectoWebAe\\Views\\Pasajero\\DatosPasajero.cshtml",
+              "DocumentMoniker": "C:\\Users\\User\\Documents\\Universidad\\Programacion\\WEB II entrega 3\\ProyectoWebAe\\Views\\Pasajero\\DatosPasajero.cshtml",
               "RelativeDocumentMoniker": "Views\\Pasajero\\DatosPasajero.cshtml",
-              "ToolTip": "C:\\Users\\User\\Downloads\\ProyectoWebAe\\Views\\Pasajero\\DatosPasajero.cshtml",
+              "ToolTip": "C:\\Users\\User\\Documents\\Universidad\\Programacion\\WEB II entrega 3\\ProyectoWebAe\\Views\\Pasajero\\DatosPasajero.cshtml",
               "RelativeToolTip": "Views\\Pasajero\\DatosPasajero.cshtml",
               "ViewState": "AgIAAEsAAAAAAAAAAAAAAGYAAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-06-04T04:36:13.952Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-04T04:36:13.952Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 6,
               "Title": "Resumen.cshtml",
-              "DocumentMoniker": "C:\\Users\\User\\Downloads\\ProyectoWebAe\\Views\\Resumen\\Resumen.cshtml",
+              "DocumentMoniker": "C:\\Users\\User\\Documents\\Universidad\\Programacion\\WEB II entrega 3\\ProyectoWebAe\\Views\\Resumen\\Resumen.cshtml",
               "RelativeDocumentMoniker": "Views\\Resumen\\Resumen.cshtml",
-              "ToolTip": "C:\\Users\\User\\Downloads\\ProyectoWebAe\\Views\\Resumen\\Resumen.cshtml",
+              "ToolTip": "C:\\Users\\User\\Documents\\Universidad\\Programacion\\WEB II entrega 3\\ProyectoWebAe\\Views\\Resumen\\Resumen.cshtml",
               "RelativeToolTip": "Views\\Resumen\\Resumen.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAHAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-06-04T04:34:32.684Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 11,
               "Title": "index.cshtml",
-              "DocumentMoniker": "C:\\Users\\User\\Downloads\\ProyectoWebAe\\Views\\Tarifas\\index.cshtml",
+              "DocumentMoniker": "C:\\Users\\User\\Documents\\Universidad\\Programacion\\WEB II entrega 3\\ProyectoWebAe\\Views\\Tarifas\\index.cshtml",
               "RelativeDocumentMoniker": "Views\\Tarifas\\index.cshtml",
-              "ToolTip": "C:\\Users\\User\\Downloads\\ProyectoWebAe\\Views\\Tarifas\\index.cshtml",
+              "ToolTip": "C:\\Users\\User\\Documents\\Universidad\\Programacion\\WEB II entrega 3\\ProyectoWebAe\\Views\\Tarifas\\index.cshtml",
               "RelativeToolTip": "Views\\Tarifas\\index.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAuAAAAAAAAAA==",
+              "ViewState": "AgIAAG8AAAAAAAAAAAAAAIoAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-06-04T04:28:27.092Z",
               "EditorCaption": ""

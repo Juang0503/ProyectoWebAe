@@ -183,21 +183,21 @@ namespace ProyectoAerolineaWeb.Data
                             VueloId = vuelo.Id,
                             HoraSalida = new TimeSpan(6, 40, 0),
                             HoraLlegada = new TimeSpan(13, 10, 0),
-                            Precio = 1106115
+                            Precio = 115
                         },
                         new HorarioVuelo
                         {
                             VueloId = vuelo.Id,
                             HoraSalida = new TimeSpan(6, 54, 0),
                             HoraLlegada = new TimeSpan(14, 15, 0),
-                            Precio = 1328570
+                            Precio = 170
                         },
                         new HorarioVuelo
                         {
                             VueloId = vuelo.Id,
                             HoraSalida = new TimeSpan(8, 0, 0),
                             HoraLlegada = new TimeSpan(13, 10, 0),
-                            Precio = 1106115
+                            Precio = 115
                         }
                     );
                 }
@@ -216,7 +216,7 @@ namespace ProyectoAerolineaWeb.Data
                             HorarioVueloId = horario.Id,
                             Nombre = "basic",
                             Descripcion = "Tarifa básica",
-                            Precio = horario.Precio + 100000,
+                            Precio = horario.Precio + 100,
                             Beneficios = "1 artículo personal (bolso);Acumula 3 lifemiles por cada USD;No incluye servicios adicionales",
                             EsRecomendada = false
                         },
@@ -225,7 +225,7 @@ namespace ProyectoAerolineaWeb.Data
                             HorarioVueloId = horario.Id,
                             Nombre = "classic",
                             Descripcion = "Tarifa clásica",
-                            Precio = horario.Precio + 200000,
+                            Precio = horario.Precio + 200,
                             Beneficios = "1 artículo personal (bolso);1 equipaje de mano (10 kg);1 equipaje de bodega (23 kg);Check-in en aeropuerto;Asiento Economy incluido;Acumula 6 lifemiles por cada USD;Menú a bordo;Cambios (antes del vuelo)",
                             EsRecomendada = true
                         },
@@ -234,7 +234,7 @@ namespace ProyectoAerolineaWeb.Data
                             HorarioVueloId = horario.Id,
                             Nombre = "flex",
                             Descripcion = "Tarifa flexible",
-                            Precio = horario.Precio + 400000,
+                            Precio = horario.Precio + 400,
                             Beneficios = "1 artículo personal (bolso);1 equipaje de mano (10 kg);1 equipaje de bodega (23 kg);Check-in en aeropuerto;Asiento Plus (sujeto a disponibilidad);Acumula 8 lifemiles por cada USD;Cambios (antes del vuelo);Reembolso (antes del vuelo)",
                             EsRecomendada = false
                         }
