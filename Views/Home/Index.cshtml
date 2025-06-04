@@ -6,108 +6,95 @@
     var fechasDisponiblesVuelta = ViewBag.FechasDisponiblesVuelta as string[] ?? new string[0];
 }
 
-<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
-    <div class="container">
-        <a class="navbar-brand" href="#">
-            <img src="/img/avianca-logo.png" alt="Logo" style="height:40px;">
-        </a>
-        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-            <li class="nav-item"><a class="nav-link" href="#">Reservar</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">Ofertas y destinos</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">Tu reserva</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">Check-in</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">Información y ayuda</a></li>
-        </ul>
-    </div>
-</nav>
+<!-- Video de fondo -->
+<video class="video-fondoinicio" autoplay muted loop playsinline>
+    <source src="~/mp4/Inicio.mp4" type="video/mp4">
+    Tu navegador no soporta video HTML5.
+</video>
 
-<div style="background: linear-gradient(180deg, #e3f2fd 60%, #fff 100%); padding-bottom: 40px;">
-    <div class="container py-4">
-        <div class="bg-white rounded shadow p-4 mx-auto" style="max-width: 900px;">
-            <form class="row g-2 align-items-end" method="get" asp-controller="Home" asp-action="SeleccionarVuelo">
-                <div class="col">
-                    <label for="origen" class="form-label">Origen</label>
-                    <select class="form-select" id="origen" name="origen" required>
-                        <option value="">Seleccione ciudad de origen</option>
-                        @foreach (var ciudadOrigen in vuelos.Select(v => v.CiudadOrigen).DistinctBy(c => c.Id).OrderBy(c => c.Nombre))
-                        {
-                            <option value="@ciudadOrigen.Id">@ciudadOrigen.Nombre</option>
-                        }
-                    </select>
-                </div>
-                <div class="col">
-                    <label for="destino" class="form-label">Destino</label>
-                    <select class="form-select" id="destino" name="destino" required>
-                        <option value="">Seleccione ciudad de destino</option>
-                        @foreach (var ciudadDestino in vuelos
-                        .GroupBy(v => new { IdDestino = v.CiudadDestino.Id, NombreDestino = v.CiudadDestino.Nombre, IdOrigen = v.CiudadOrigen.Id })
-                        .Select(g => g.First())
-                        .OrderBy(v => v.CiudadDestino.Nombre))
-                        {
-                            <option value="@ciudadDestino.CiudadDestino.Id" data-origen="@ciudadDestino.CiudadOrigen.Id">
-                                @ciudadDestino.CiudadDestino.Nombre
-                            </option>
-                        }
-                    </select>
-                </div>
-                <div class="col">
-                    <label for="fechaIda" class="form-label">Ida</label>
-                    <input type="text" class="form-control" id="fechaIda" name="fechaIda" required autocomplete="off">
-                </div>
-                <div class="col">
-                    <label for="fechaVuelta" class="form-label">Vuelta</label>
-                    <input type="text" class="form-control" id="fechaVuelta" name="fechaVuelta" autocomplete="off">
-                </div>
-                <div class="col">
-                    <label class="form-label">Adultos</label>
-                    <input type="number" class="form-control" id="adultos" name="adultos" min="1" value="1" required>
-                </div>
-                <div class="col">
-                    <label class="form-label">Niños</label>
-                    <input type="number" class="form-control" id="ninos" name="ninos" min="0" value="0">
-                </div>
-                <div class="col">
-                    <label class="form-label">Bebés</label>
-                    <input type="number" class="form-control" id="bebes" name="bebes" min="0" value="0">
-                </div>
-                <div class="col">
-                    <label class="form-label">Jóvenes</label>
-                    <input type="number" class="form-control" id="jovenes" name="jovenes" min="0" value="0">
-                </div>
-                <div class="col-auto align-self-end">
-                    <button type="submit" class="btn btn-dark px-4">Buscar</button>
-                </div>
-            </form>
+<!-- Contenido principal -->
+<div class="contenido-superior">
+    <div >
+        <div class="container py-4">
+            <div class="bg-dark-subtlerounded shadow p-4 mx-auto" style="max-width: 900px;">
+                <form class="row g-2 align-items-end" method="get" asp-controller="Home" asp-action="SeleccionarVuelo">
+                    <div class="col">
+                        <label for="origen" class="form-label">Origen</label>
+                        <select class="form-select" id="origen" name="origen" required>
+                            <option value="">Seleccione ciudad de origen</option>
+                            @foreach (var ciudadOrigen in vuelos.Select(v => v.CiudadOrigen).DistinctBy(c => c.Id).OrderBy(c => c.Nombre))
+                            {
+                                <option value="@ciudadOrigen.Id">@ciudadOrigen.Nombre</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="col">
+                        <label for="destino" class="form-label">Destino</label>
+                        <select class="form-select" id="destino" name="destino" required>
+                            <option value="">Seleccione ciudad de destino</option>
+                            @foreach (var ciudadDestino in vuelos
+                            .GroupBy(v => new { IdDestino = v.CiudadDestino.Id, NombreDestino = v.CiudadDestino.Nombre, IdOrigen = v.CiudadOrigen.Id })
+                            .Select(g => g.First())
+                            .OrderBy(v => v.CiudadDestino.Nombre))
+                            {
+                                <option value="@ciudadDestino.CiudadDestino.Id" data-origen="@ciudadDestino.CiudadOrigen.Id">
+                                    @ciudadDestino.CiudadDestino.Nombre
+                                </option>
+                            }
+                        </select>
+                    </div>
+                    <div class="col">
+                        <label for="fechaIda" class="form-label">Ida</label>
+                        <input type="text" class="form-control" id="fechaIda" name="fechaIda" required autocomplete="off">
+                    </div>
+                    <div class="col">
+                        <label for="fechaVuelta" class="form-label">Vuelta</label>
+                        <input type="text" class="form-control" id="fechaVuelta" name="fechaVuelta" autocomplete="off">
+                    </div>
+                    <div class="col">
+                        <label class="form-label">Adultos</label>
+                        <input type="number" class="form-control" id="adultos" name="adultos" min="1" value="1" required>
+                    </div>
+                    <div class="col">
+                        <label class="form-label">Niños</label>
+                        <input type="number" class="form-control" id="ninos" name="ninos" min="0" value="0">
+                    </div>
+                    <div class="col">
+                        <label class="form-label">Bebés</label>
+                        <input type="number" class="form-control" id="bebes" name="bebes" min="0" value="0">
+                    </div>
+                    <div class="col">
+                        <label class="form-label">Jóvenes</label>
+                        <input type="number" class="form-control" id="jovenes" name="jovenes" min="0" value="0">
+                    </div>
+                    <div class="col-auto align-self-end">
+                        <button type="submit" class="btn btn-dark px-4">Buscar</button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
-</div>
 
-<div class="container my-4">
-    <div class="row align-items-center bg-white rounded shadow" style="overflow:hidden;">
-        <div class="col-md-7 p-0">
-            <img src="/img/cartagena.jpg" alt="Cartagena" class="img-fluid rounded-start" style="height: 250px; object-fit: cover; width: 100%;">
-        </div>
-        <div class="col-md-5 bg-danger text-white p-4">
-            <h4 class="fw-bold">HOT destinations<br><span class="badge bg-warning text-danger">2x1 en millas</span></h4>
-            <p class="mb-1">Vuela barato y duplica tus millas</p>
-            <p class="mb-1">Por trayecto desde</p>
-            <h2 class="fw-bold">COP 56.800</h2>
-            <button class="btn btn-light">Reserva ahora</button>
+    <div class="container my-4">
+        <div class="row align-items-center bg-white rounded shadow" style="overflow:hidden;">
+            <div class="col-12 p-0">
+                <img src="/img/Ofertas/6.jpg" alt="Cartagena" class="img-fluid rounded-start" style="height: 250px; object-fit: cover; width: 100%; max-width1200px; ">
+            </div>
         </div>
     </div>
-</div>
 
-<div class="container my-5">
-    <h3 class="mb-4">Ofertas desde <span class="text-primary">Bogotá</span></h3>
-    <div class="row g-4">
-        <div class="col-md-4">
-            <img src="/img/oferta1.jpg" class="img-fluid rounded" alt="Oferta 1">
-        </div>
-        <div class="col-md-4">
-            <img src="/img/oferta2.jpg" class="img-fluid rounded" alt="Oferta 2">
-        </div>
-        <div class="col-md-4">
-            <img src="/img/oferta3.jpg" class="img-fluid rounded" alt="Oferta 3">
+    <div class="container my-5">
+        <h3 class="mb-4 text-info">Ofertas desde <span class="text-white">Peru</span></h3>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <img src="/img/Ofertas/1.jpg" class="img-fluid rounded" alt="Oferta 1">
+            </div>
+            <div class="col-md-4">
+                <img src="/img/Ofertas/4.jpg" class="img-fluid rounded" alt="Oferta 2">
+            </div>
+            <div class="col-md-4">
+                <img src="/img/Ofertas/5.jpg" class="img-fluid rounded" alt="Oferta 3">
+            </div>
         </div>
     </div>
 </div>

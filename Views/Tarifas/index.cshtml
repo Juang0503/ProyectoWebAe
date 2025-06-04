@@ -22,6 +22,10 @@
         _ => "bg-light"
     };
 }
+<video class="video-fondoinicio" autoplay muted loop playsinline>
+    <source src="~/mp4/loginregister.mp4" type="video/mp4">
+    Tu navegador no soporta video HTML5.
+</video>
 
 <form method="get" asp-controller="Resumen" asp-action="Index" id="tarifasForm">
     <input type="hidden" name="origen" value="@origen" />
@@ -41,7 +45,7 @@
     <input type="hidden" name="tarifaNombreVuelta" id="tarifaNombreVuelta" />
     <input type="hidden" name="tarifaPrecioVuelta" id="tarifaPrecioVuelta" />
 
-    <h2 class="text-center my-4">Elige tu tarifa de ida</h2>
+    <h2 class="text-center my-4 text-success">Elige tu tarifa de ida</h2>
     <div class="d-flex justify-content-center gap-4 flex-wrap">
         @if (tarifasIda != null && tarifasIda.Any())
         {
@@ -79,7 +83,7 @@
 
     @if (tarifasVuelta != null && tarifasVuelta.Any())
     {
-        <h2 class="text-center my-4">Elige tu tarifa de regreso</h2>
+        <h2 class="text-center my-4 text-success">Elige tu tarifa de regreso</h2>
         <div class="d-flex justify-content-center gap-4 flex-wrap">
             @{
                 int idx = 0;
@@ -112,7 +116,7 @@
     }
 
     <div class="text-center mt-4">
-        <button type="submit" class="btn btn-dark btn-lg">Continuar</button>
+        <button type="submit" class="btn btn-success btn-lg">Continuar</button>
     </div>
 </form>
 

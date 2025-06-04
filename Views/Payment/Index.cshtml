@@ -9,6 +9,11 @@
         .Select(a => new SelectListItem { Value = a.ToString(), Text = a.ToString() }).ToList();
 }
 
+<video class="video-fondoinicio" autoplay muted loop playsinline>
+    <source src="~/mp4/servicio2.mp4" type="video/mp4">
+    Tu navegador no soporta video HTML5.
+</video>
+
 <div class="container mt-5" style="max-width: 500px;">
     <div class="card shadow">
         <div class="card-header bg-primary text-white text-center">
@@ -63,7 +68,7 @@
                     <label asp-for="CardNumber" class="form-label"></label>
                     <input asp-for="CardNumber" class="form-control" maxlength="19" placeholder="Ej: 4111 1111 1111 1111" />
                     <span asp-validation-for="CardNumber" class="text-danger"></span>
-                    <small class="form-text text-muted">Solo Visa (empieza con 4) o MasterCard (empieza con 5).</small>
+                    <small class="form-text text-muted">Incorrecto, numero mal o esta pelao.</small>
                 </div>
                 <div class="mb-3">
                     <label asp-for="CardHolder" class="form-label"></label>

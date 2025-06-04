@@ -4,7 +4,12 @@
     ViewData["Title"] = "Datos de los Pasajeros";
 }
 
-<div class="container my-4">
+<video class="video-fondoinicio" autoplay muted loop playsinline>
+    <source src="~/mp4/Servicios.mp4" type="video/mp4">
+    Tu navegador no soporta video HTML5.
+</video>
+
+<div class="container my-4 text-success">
     <h2>Datos de los Pasajeros</h2>
 
     @* Mostrar errores de validación generales *@
@@ -27,7 +32,7 @@
             .Where((d, idx) => idx <= i && d.Tipo == tipo)
             .Count();
 
-            <div class="card mb-4">
+            <div class="card bg-primary-subtle mb-4">
                 <div class="card-header">
                     <strong>
                         @tipo @(cantidadTipo > 1 ? indiceTipo.ToString() : ""):
@@ -95,7 +100,7 @@
                 </div>
         }
 
-        <div class="card mb-4">
+        <div class="card bg-primary-subtle mb-4">
             <div class="card-header">
                 <strong>Datos del titular de la reserva</strong>
             </div>

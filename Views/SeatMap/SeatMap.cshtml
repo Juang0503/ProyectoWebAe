@@ -15,90 +15,97 @@
     var basico = filas.Where(f => f.Key >= 4 && f.Key <= 5).ToList();
     var plus = filas.Where(f => f.Key >= 6 && f.Key <= 8).ToList();
 }
-
-<h2>Mapa de Asientos - Vuelo @vueloId</h2>
-
-<form method="post">
-    <div class="mb-4">
-        @for (int i = 0; i < Model.Pasajeros.Count; i++)
-        {
-            <div class="mb-2">
-                <label><strong>@Model.Pasajeros[i].NombreCompleto</strong></label>
-                <select asp-for="Pasajeros[@i].AsientoSeleccionado" class="form-select" required>
-                    <option value="">Seleccionar asiento</option>
-                    @foreach (var asiento in Model.AsientosDisponibles)
+<div class="chanty">
+    <h2 class="text-success ">Mapa de Asientos - Vuelo @vueloId</h2>
+    <div class="main ">
+        <div class="form ">
+            <form method="post">
+                <div class="mb-4">
+                    @for (int i = 0; i < Model.Pasajeros.Count; i++)
                     {
-                        <option value="@asiento">@asiento</option>
+                        <div class="mb-2">
+                            <label><strong>@Model.Pasajeros[i].NombreCompleto</strong></label>
+                            <select asp-for="Pasajeros[@i].AsientoSeleccionado" class="form-select" required>
+                                <option value="">Seleccionar asiento</option>
+                                @foreach (var asiento in Model.AsientosDisponibles)
+                                {
+                                    <option value="@asiento">@asiento</option>
+                                }
+                            </select>
+                            <input type="hidden" asp-for="Pasajeros[@i].PasajeroId" />
+                            <input type="hidden" asp-for="Pasajeros[@i].NombreCompleto" />
+                        </div>
                     }
-                </select>
-                <input type="hidden" asp-for="Pasajeros[@i].PasajeroId" />
-                <input type="hidden" asp-for="Pasajeros[@i].NombreCompleto" />
-            </div>
-        }
-    </div>
+                </div>
 
-    <div class="seat-section premium-section mb-4">
-        <div class="section-header">
-            <span class="section-title premium">Premium</span>
-            <span class="section-price">Adiciona COP 300.000</span>
+                <div class="seat-section premium-section mb-4">
+                    <div class="section-header">
+                        <span class="section-title premium">Premium</span>
+                        <span class="section-price">Adiciona COP 300.000</span>
+                    </div>
+                    <div class="section-desc">Siéntate en las primeras filas del avión y disfruta de más espacio y mayor reclinación.</div>
+                    @foreach (var fila in premium)
+                    {
+                        <div class="seat-row mb-2">
+                            @foreach (var asiento in fila.OrderBy(a => a.Numero))
+                            {
+                                var clase = asiento.Estado.ToLower() + " premium-seat";
+                                <button type="button" class="seat @clase" disabled="@(asiento.Estado != "Disponible")">
+                                    @asiento.Numero
+                                </button>
+                            }
+                        </div>
+                    }
+                </div>
+
+                <div class="seat-section basico-section mb-4">
+                    <div class="section-header">
+                        <span class="section-title basico">Básico</span>
+                        <span class="section-price">Adiciona COP 100.000</span>
+                    </div>
+                    <div class="section-desc">Asientos económicos.</div>
+                    @foreach (var fila in basico)
+                    {
+                        <div class="seat-row mb-2">
+                            @foreach (var asiento in fila.OrderBy(a => a.Numero))
+                            {
+                                var clase = asiento.Estado.ToLower() + " basico-seat";
+                                <button type="button" class="seat @clase" disabled="@(asiento.Estado != "Disponible")">
+                                    @asiento.Numero
+                                </button>
+                            }
+                        </div>
+                    }
+                </div>
+
+                <div class="seat-section plus-section mb-4">
+                    <div class="section-header">
+                        <span class="section-title plus">Plus</span>
+                        <span class="section-price">Adiciona COP 200.000</span>
+                    </div>
+                    <div class="section-desc">Disfruta de mayor espacio, apoyacabezas ajustables y reclinación.</div>
+                    @foreach (var fila in plus)
+                    {
+                        <div class="seat-row mb-2">
+                            @foreach (var asiento in fila.OrderBy(a => a.Numero))
+                            {
+                                var clase = asiento.Estado.ToLower() + " plus-seat";
+                                <button type="button" class="seat @clase" disabled="@(asiento.Estado != "Disponible")">
+                                    @asiento.Numero
+                                </button>
+                            }
+                        </div>
+                    }
+                </div>
+
+                <button type="submit" class="btn btn-primary">Continuar</button>
+            </form>
         </div>
-        <div class="section-desc">Siéntate en las primeras filas del avión y disfruta de más espacio y mayor reclinación.</div>
-        @foreach (var fila in premium)
-        {
-            <div class="seat-row mb-2">
-                @foreach (var asiento in fila.OrderBy(a => a.Numero))
-                {
-                    var clase = asiento.Estado.ToLower() + " premium-seat";
-                    <button type="button" class="seat @clase" disabled="@(asiento.Estado != "Disponible")">
-                        @asiento.Numero
-                    </button>
-                }
-            </div>
-        }
+
     </div>
 
-    <div class="seat-section basico-section mb-4">
-        <div class="section-header">
-            <span class="section-title basico">Básico</span>
-            <span class="section-price">Adiciona COP 100.000</span>
-        </div>
-        <div class="section-desc">Asientos económicos.</div>
-        @foreach (var fila in basico)
-        {
-            <div class="seat-row mb-2">
-                @foreach (var asiento in fila.OrderBy(a => a.Numero))
-                {
-                    var clase = asiento.Estado.ToLower() + " basico-seat";
-                    <button type="button" class="seat @clase" disabled="@(asiento.Estado != "Disponible")">
-                        @asiento.Numero
-                    </button>
-                }
-            </div>
-        }
-    </div>
+</div>
 
-    <div class="seat-section plus-section mb-4">
-        <div class="section-header">
-            <span class="section-title plus">Plus</span>
-            <span class="section-price">Adiciona COP 200.000</span>
-        </div>
-        <div class="section-desc">Disfruta de mayor espacio, apoyacabezas ajustables y reclinación.</div>
-        @foreach (var fila in plus)
-        {
-            <div class="seat-row mb-2">
-                @foreach (var asiento in fila.OrderBy(a => a.Numero))
-                {
-                    var clase = asiento.Estado.ToLower() + " plus-seat";
-                    <button type="button" class="seat @clase" disabled="@(asiento.Estado != "Disponible")">
-                        @asiento.Numero
-                    </button>
-                }
-            </div>
-        }
-    </div>
-
-    <button type="submit" class="btn btn-primary">Continuar</button>
-</form>
 
 <style>
     .seatmap, .seat-section {
@@ -110,9 +117,19 @@
     .seat-row {
         display: flex;
         flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
         margin-bottom: 5px;
     }
 
+    .main{
+        display:flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
     .seat {
         width: 40px;
         height: 40px;
@@ -125,6 +142,10 @@
         box-shadow: 0 2px 4px rgba(0,0,0,0.08);
     }
 
+    .chanty {
+        background: #ffffff;
+        background: radial-gradient(circle, rgba(255, 255, 255, 1) 0%, rgba(148, 187, 233, 1) 100%);
+    }
     .premium-seat {
         background: #4B2067;
         color: #fff;

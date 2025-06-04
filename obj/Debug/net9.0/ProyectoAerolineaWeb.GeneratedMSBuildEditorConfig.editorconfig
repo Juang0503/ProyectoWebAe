@@ -17,61 +17,61 @@ build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = ProyectoAerolineaWeb
 build_property.RootNamespace = ProyectoAerolineaWeb
-build_property.ProjectDir = C:\Users\User\Documents\Universidad\Programacion\WEB II entrega 3\ProyectoWebAe\
+build_property.ProjectDir = C:\Users\User\Downloads\ProyectoWebAe\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 9.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\User\Documents\Universidad\Programacion\WEB II entrega 3\ProyectoWebAe
+build_property.MSBuildProjectDirectory = C:\Users\User\Downloads\ProyectoWebAe
 build_property._RazorSourceGeneratorDebug = 
 build_property.EffectiveAnalysisLevelStyle = 9.0
 build_property.EnableCodeStyleSeverity = 
 
-[C:/Users/User/Documents/Universidad/Programacion/WEB II entrega 3/ProyectoWebAe/Views/Home/Index.cshtml]
+[C:/Users/User/Downloads/ProyectoWebAe/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/User/Documents/Universidad/Programacion/WEB II entrega 3/ProyectoWebAe/Views/Home/SeleccionarVuelo.cshtml]
+[C:/Users/User/Downloads/ProyectoWebAe/Views/Home/SeleccionarVuelo.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxTZWxlY2Npb25hclZ1ZWxvLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/User/Documents/Universidad/Programacion/WEB II entrega 3/ProyectoWebAe/Views/Pasajero/DatosPasajero.cshtml]
+[C:/Users/User/Downloads/ProyectoWebAe/Views/Pasajero/DatosPasajero.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGFzYWplcm9cRGF0b3NQYXNhamVyby5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/User/Documents/Universidad/Programacion/WEB II entrega 3/ProyectoWebAe/Views/Payment/Index.cshtml]
+[C:/Users/User/Downloads/ProyectoWebAe/Views/Payment/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGF5bWVudFxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/User/Documents/Universidad/Programacion/WEB II entrega 3/ProyectoWebAe/Views/Resumen/Resumen.cshtml]
+[C:/Users/User/Downloads/ProyectoWebAe/Views/Resumen/Resumen.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVzdW1lblxSZXN1bWVuLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/User/Documents/Universidad/Programacion/WEB II entrega 3/ProyectoWebAe/Views/SeatMap/SeatMap.cshtml]
+[C:/Users/User/Downloads/ProyectoWebAe/Views/SeatMap/SeatMap.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VhdE1hcFxTZWF0TWFwLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/User/Documents/Universidad/Programacion/WEB II entrega 3/ProyectoWebAe/Views/Shared/Error.cshtml]
+[C:/Users/User/Downloads/ProyectoWebAe/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/User/Documents/Universidad/Programacion/WEB II entrega 3/ProyectoWebAe/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/User/Downloads/ProyectoWebAe/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/User/Documents/Universidad/Programacion/WEB II entrega 3/ProyectoWebAe/Views/Tarifas/index.cshtml]
+[C:/Users/User/Downloads/ProyectoWebAe/Views/Tarifas/index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGFyaWZhc1xpbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/User/Documents/Universidad/Programacion/WEB II entrega 3/ProyectoWebAe/Views/_ViewImports.cshtml]
+[C:/Users/User/Downloads/ProyectoWebAe/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/User/Documents/Universidad/Programacion/WEB II entrega 3/ProyectoWebAe/Views/_ViewStart.cshtml]
+[C:/Users/User/Downloads/ProyectoWebAe/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/User/Documents/Universidad/Programacion/WEB II entrega 3/ProyectoWebAe/Views/Shared/_Layout.cshtml]
+[C:/Users/User/Downloads/ProyectoWebAe/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-zg9uhlwqh8
