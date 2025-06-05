@@ -1,0 +1,139 @@
+﻿@using ProyectoAerolineaWeb.Models
+@{
+    ViewData["Title"] = "Elige cómo quieres volar";
+    var tarifasIda = ViewBag.TarifasIda as List<Tarifa>;
+    var tarifasVuelta = ViewBag.TarifasVuelta as List<Tarifa>;
+    var origen = ViewBag.Origen as string ?? "";
+    var destino = ViewBag.Destino as string ?? "";
+    var fechaIda = ViewBag.FechaIda as string ?? "";
+    var fechaVuelta = ViewBag.FechaVuelta as string ?? "";
+    var pasajeros = ViewBag.Pasajeros ?? 1;
+    var adultos = ViewBag.Adultos ?? 1;
+    var ninos = ViewBag.Ninos ?? 0;
+    var jovenes = ViewBag.Jovenes ?? 0;
+    var bebes = ViewBag.Bebes ?? 0;
+    var horarioVueloIdIda = ViewBag.HorarioVueloIdIda ?? 0;
+    var horarioVueloIdVuelta = ViewBag.HorarioVueloIdVuelta;
+    Func<string, string> fondo = nombre => nombre.ToLower() switch
+    {
+        "basic" => "bg-danger text-white",
+        "classic" => "bg-primary text-white",
+        "flex" => "bg-warning text-dark",
+        _ => "bg-light"
+    };
+}
+<video class="video-fondoinicio" autoplay muted loop playsinline>
+    <source src="~/mp4/loginregister.mp4" type="video/mp4">
+</video>
+
+<form method="get" asp-controller="Resumen" asp-action="Index" id="tarifasForm">
+    <input type="hidden" name="origen" value="@origen" />
+    <input type="hidden" name="destino" value="@destino" />
+    <input type="hidden" name="fechaIda" value="@fechaIda" />
+    <input type="hidden" name="fechaVuelta" value="@fechaVuelta" />
+    <input type="hidden" name="pasajeros" value="@pasajeros" />
+    <input type="hidden" name="adultos" value="@adultos" />
+    <input type="hidden" name="ninos" value="@ninos" />
+    <input type="hidden" name="jovenes" value="@jovenes" />
+    <input type="hidden" name="bebes" value="@bebes" />
+    <input type="hidden" name="horarioVueloIdIda" value="@horarioVueloIdIda" />
+    <input type="hidden" name="horarioVueloIdVuelta" value="@horarioVueloIdVuelta" />
+
+    <input type="hidden" name="tarifaNombre" id="tarifaNombre" />
+    <input type="hidden" name="tarifaPrecio" id="tarifaPrecio" />
+    <input type="hidden" name="tarifaNombreVuelta" id="tarifaNombreVuelta" />
+    <input type="hidden" name="tarifaPrecioVuelta" id="tarifaPrecioVuelta" />
+
+    <h2 class="text-center my-4 text-success">Elige tu tarifa de ida</h2>
+    <div class="d-flex justify-content-center gap-4 flex-wrap">
+        @if (tarifasIda != null && tarifasIda.Any())
+        {
+            int idx = 0;
+            foreach (var tarifa in tarifasIda)
+            {
+                <div class="card p-4 shadow-sm @fondo(tarifa.Nombre) d-flex flex-column"
+                     style="min-width:320px; max-width:340px; min-height:480px; border-radius:20px; border:2px solid @(tarifa.EsRecomendada ? "#6f42c1" : "#eee");">
+                    <input class="form-check-input mb-2" type="radio" name="tarifaIdaRadio" id="tarifaIdaRadio_@idx"
+                           data-nombre="@tarifa.Nombre" data-precio="@tarifa.Precio" required />
+                    <label for="tarifaIdaRadio_@idx" class="fw-bold fs-3">@tarifa.Nombre</label>
+                    @if (tarifa.EsRecomendada && tarifa.Nombre.ToLower() != "classic")
+                    {
+                        <span class="badge bg-light text-dark ms-2">Recomendada</span>
+                    }
+                    <ul class="list-unstyled mb-3">
+                        @foreach (var beneficio in tarifa.Beneficios.Split(';'))
+                        {
+                            <li>@beneficio</li>
+                        }
+                    </ul>
+                    <div class="text-center mb-3 mt-auto">
+                        <div class="fw-bold fs-4">COP @tarifa.Precio.ToString("N0")</div>
+                        <div class="small">Precio por pasajero</div>
+                    </div>
+                </div>
+                idx++;
+            }
+        }
+        else
+        {
+            <div class="alert alert-warning">No hay tarifas de ida disponibles.</div>
+        }
+    </div>
+
+    @if (tarifasVuelta != null && tarifasVuelta.Any())
+    {
+        <h2 class="text-center my-4 text-success">Elige tu tarifa de regreso</h2>
+        <div class="d-flex justify-content-center gap-4 flex-wrap">
+            @{
+                int idx = 0;
+            }
+            @foreach (var tarifa in tarifasVuelta)
+            {
+                <div class="card p-4 shadow-sm @fondo(tarifa.Nombre) d-flex flex-column"
+                     style="min-width:320px; max-width:340px; min-height:480px; border-radius:20px; border:2px solid @(tarifa.EsRecomendada ? "#6f42c1" : "#eee");">
+                    <input class="form-check-input mb-2" type="radio" name="tarifaVueltaRadio" id="tarifaVueltaRadio_@idx"
+                           data-nombre="@tarifa.Nombre" data-precio="@tarifa.Precio" required />
+                    <label for="tarifaVueltaRadio_@idx" class="fw-bold fs-3">@tarifa.Nombre</label>
+                    @if (tarifa.EsRecomendada && tarifa.Nombre.ToLower() != "classic")
+                    {
+                        <span class="badge bg-light text-dark ms-2">Recomendada</span>
+                    }
+                    <ul class="list-unstyled mb-3">
+                        @foreach (var beneficio in tarifa.Beneficios.Split(';'))
+                        {
+                            <li>@beneficio</li>
+                        }
+                    </ul>
+                    <div class="text-center mb-3 mt-auto">
+                        <div class="fw-bold fs-4">COP @tarifa.Precio.ToString("N0")</div>
+                        <div class="small">Precio por pasajero</div>
+                    </div>
+                </div>
+                idx++;
+            }
+        </div>
+    }
+
+    <div class="text-center mt-4">
+        <button type="submit" class="btn btn-success btn-lg">Continuar</button>
+    </div>
+</form>
+
+@section Scripts {
+    <script>
+        // Tarifa de ida
+        document.querySelectorAll('input[name="tarifaIdaRadio"]').forEach(function (radio) {
+            radio.addEventListener('change', function () {
+                document.getElementById('tarifaNombre').value = this.getAttribute('data-nombre');
+                document.getElementById('tarifaPrecio').value = this.getAttribute('data-precio');
+            });
+        });
+        // Tarifa de vuelta
+        document.querySelectorAll('input[name="tarifaVueltaRadio"]').forEach(function (radio) {
+            radio.addEventListener('change', function () {
+                document.getElementById('tarifaNombreVuelta').value = this.getAttribute('data-nombre');
+                document.getElementById('tarifaPrecioVuelta').value = this.getAttribute('data-precio');
+            });
+        });
+    </script>
+}

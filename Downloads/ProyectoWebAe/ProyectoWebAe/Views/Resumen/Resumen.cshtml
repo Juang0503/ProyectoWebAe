@@ -1,0 +1,227 @@
+﻿@model ResumenModel
+@{
+    ViewData["Title"] = "Resumen de compra";
+    var totalPasajeros = Model.Adultos + Model.Ninos + Model.Jovenes + Model.Bebes;
+    var totalTarifas = (Model.TarifaPrecio + Model.TarifaPrecioVuelta) * totalPasajeros;
+    var totalVuelos = (Model.PrecioVueloIda + Model.PrecioVueloVuelta) * totalPasajeros;
+    var totalGeneral = totalTarifas + totalVuelos;
+    var fechasDisponiblesIda = ViewData["FechasDisponiblesIda"] as string[] ?? new string[0];
+    var fechasDisponiblesVuelta = ViewData["FechasDisponiblesVuelta"] as string[] ?? new string[0];
+}
+
+<video class="video-fondoinicio" autoplay muted loop playsinline>
+    <source src="~/mp4/servicio2.mp4" type="video/mp4">
+    Tu navegador no soporta video HTML5.
+</video>
+
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-md-7 col-lg-6">
+            <div class="card shadow-lg border-0">
+                <div class="card-header bg-primary text-white text-center">
+                    <h3 class="mb-0">Resumen de tu compra</h3>
+                </div>
+                <div class="card-body">
+                    <form method="post">
+                        <ul class="list-group list-group-flush mb-4">
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <span><i class="bi bi-geo-alt-fill me-2 text-danger"></i><strong>Origen:</strong></span>
+                                <span>@Model.Origen</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <span><i class="bi bi-flag-fill me-2 text-success"></i><strong>Destino:</strong></span>
+                                <span>@Model.Destino</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <span><i class="bi bi-calendar-event me-2 text-info"></i><strong>Fecha Ida:</strong></span>
+                                <span>
+                                    <input type="text" id="fechaIda" name="FechaIda" class="form-control form-control-sm" value="@Model.FechaIda" required autocomplete="off" />
+                                </span>
+                            </li>
+                            @if (!string.IsNullOrEmpty(Model.FechaVuelta))
+                            {
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <span><i class="bi bi-calendar-event me-2 text-info"></i><strong>Fecha Vuelta:</strong></span>
+                                    <span>
+                                        <input type="text" id="fechaVuelta" name="FechaVuelta" class="form-control form-control-sm" value="@Model.FechaVuelta" autocomplete="off" />
+                                    </span>
+                                </li>
+                            }
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <span>
+                                    <i class="bi bi-people-fill me-2 text-secondary"></i>
+                                    <strong>Pasajeros:</strong>
+                                </span>
+                                <span id="resumenPasajeros">
+                                    @if (Model.Adultos > 0)
+                                    {
+                                        @($"{Model.Adultos} Adulto{(Model.Adultos > 1 ? "s" : "")}")
+                                    }
+                                    @if (Model.Ninos > 0)
+                                    {
+                                        @(Model.Adultos > 0 ? ", " : "")
+                                        @($"{Model.Ninos} Niño{(Model.Ninos > 1 ? "s" : "")}")
+                                    }
+                                    @if (Model.Bebes > 0)
+                                    {
+                                        @(Model.Adultos > 0 || Model.Ninos > 0 ? ", " : "")
+                                        @($"{Model.Bebes} Bebé{(Model.Bebes > 1 ? "s" : "")}")
+                                    }
+                                    @if (Model.Jovenes > 0)
+                                    {
+                                        @(Model.Adultos > 0 || Model.Ninos > 0 || Model.Bebes > 0 ? ", " : "")
+                                        @($"{Model.Jovenes} Joven{(Model.Jovenes > 1 ? "es" : "")}")
+                                    }
+                                    <button type="button" class="btn btn-link btn-sm ms-2" id="btnEditarPasajeros">Editar</button>
+                                </span>
+                                </span>
+                            </li>
+                            <li class="list-group-item" id="formPasajeros" style="display:none;">
+                                <div class="row">
+                                    <div class="col-6 col-md-3 mb-2">
+                                        <label class="form-label mb-0">Adultos</label>
+                                        <input type="number" class="form-control form-control-sm" name="Adultos" id="adultos" min="1" value="@Model.Adultos" required>
+                                    </div>
+                                    <div class="col-6 col-md-3 mb-2">
+                                        <label class="form-label mb-0">Niños</label>
+                                        <input type="number" class="form-control form-control-sm" name="Ninos" id="ninos" min="0" value="@Model.Ninos">
+                                    </div>
+                                    <div class="col-6 col-md-3 mb-2">
+                                        <label class="form-label mb-0">Bebés</label>
+                                        <input type="number" class="form-control form-control-sm" name="Bebes" id="bebes" min="0" value="@Model.Bebes">
+                                    </div>
+                                    <div class="col-6 col-md-3 mb-2">
+                                        <label class="form-label mb-0">Jóvenes</label>
+                                        <input type="number" class="form-control form-control-sm" name="Jovenes" id="jovenes" min="0" value="@Model.Jovenes">
+                                    </div>
+                                    <div class="col-12 text-end">
+                                        <button type="button" class="btn btn-secondary btn-sm mt-2" id="btnCancelarPasajeros">Cancelar</button>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <span><strong>Precio vuelo ida:</strong></span>
+                                <span>COP @Model.PrecioVueloIda.ToString("N0")</span>
+                            </li>
+                            @if (Model.PrecioVueloVuelta > 0)
+                            {
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <span><strong>Precio vuelo vuelta:</strong></span>
+                                    <span>COP @Model.PrecioVueloVuelta.ToString("N0")</span>
+                                </li>
+                            }
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <span><strong>Tarifa Ida:</strong></span>
+                                <span class="text-capitalize">@Model.TarifaNombre</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <span><strong>Precio tarifa ida:</strong></span>
+                                <span>COP @Model.TarifaPrecio.ToString("N0")</span>
+                            </li>
+                            @if (!string.IsNullOrEmpty(Model.TarifaNombreVuelta))
+                            {
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <span><strong>Tarifa Vuelta:</strong></span>
+                                    <span class="text-capitalize">@Model.TarifaNombreVuelta</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <span><strong>Precio tarifa vuelta:</strong></span>
+                                    <span>COP @Model.TarifaPrecioVuelta.ToString("N0")</span>
+                                </li>
+                            }
+                        </ul>
+                        <div class="text-center mb-2">
+                            <div class="fw-bold fs-5 text-primary">
+                                Total vuelos: COP @totalVuelos.ToString("N0")
+                            </div>
+                            <div class="fw-bold fs-5 text-primary">
+                                Total tarifas: COP @totalTarifas.ToString("N0")
+                            </div>
+                            <div class="fw-bold fs-3 text-success mt-2">
+                                Total general: COP @totalGeneral.ToString("N0")
+                            </div>
+                        </div>
+                        <div class="text-center mt-4">
+                            <button type="submit" class="btn btn-warning btn-lg me-2">Guardar cambios</button>
+                            <a asp-controller="Pasajero"
+                               asp-action="DatosPasajero"
+                               asp-route-adultos="@Model.Adultos"
+                               asp-route-ninos="@Model.Ninos"
+                               asp-route_jovenes="@Model.Jovenes"
+                               asp-route-bebes="@Model.Bebes"
+                               class="btn btn-primary btn-lg">
+                                Continuar
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script>
+        var fechasIda = @Html.Raw(System.Text.Json.JsonSerializer.Serialize(fechasDisponiblesIda));
+        var fechasVuelta = @Html.Raw(System.Text.Json.JsonSerializer.Serialize(fechasDisponiblesVuelta));
+
+        var fpIda = flatpickr("#fechaIda", {
+            dateFormat: "Y-m-d",
+            minDate: "today",
+            enable: fechasIda,
+            onChange: function(selectedDates, dateStr, instance) {
+                var minVuelta = "";
+                if (dateStr) {
+                    minVuelta = fechasVuelta.find(f => f > dateStr) || null;
+                }
+                if (window.fpVuelta) {
+                    fpVuelta.set('minDate', minVuelta);
+                    fpVuelta.set('enable', fechasVuelta.filter(f => f > dateStr));
+                    fpVuelta.clear();
+                }
+            }
+        });
+
+        var fpVuelta = flatpickr("#fechaVuelta", {
+            dateFormat: "Y-m-d",
+            minDate: "today",
+            enable: fechasVuelta
+        });
+
+        
+        document.getElementById('btnEditarPasajeros').addEventListener('click', function () {
+            document.getElementById('formPasajeros').style.display = '';
+            document.getElementById('resumenPasajeros').style.display = 'none';
+        });
+        document.getElementById('btnCancelarPasajeros').addEventListener('click', function () {
+            document.getElementById('formPasajeros').style.display = 'none';
+            document.getElementById('resumenPasajeros').style.display = '';
+        });
+
+
+                document.querySelector('form').addEventListener('submit', function (e) {
+            var adultos = parseInt(document.getElementById('adultos').value, 10) || 0;
+            var ninos = parseInt(document.getElementById('ninos').value, 10) || 0;
+            var bebes = parseInt(document.getElementById('bebes').value, 10) || 0;
+            var jovenes = parseInt(document.getElementById('jovenes').value, 10) || 0;
+
+            if ((bebes > 0 || ninos > 0) && adultos === 0) {
+                alert('Debe haber al menos un adulto para acompañar a bebés o niños.');
+                e.preventDefault();
+                return false;
+            }
+            if (bebes > adultos) {
+                alert('Solo se permite un bebé por adulto.');
+                e.preventDefault();
+                return false;
+            }
+            if (jovenes > 0 && (bebes > 0 || ninos > 0)) {
+                alert('Si selecciona jóvenes, no puede agregar bebés ni niños.');
+                e.preventDefault();
+                return false;
+            }
+        });
+    </script>
+}

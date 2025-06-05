@@ -1,0 +1,192 @@
+﻿@{
+    ViewData["Title"] = "Inicio";
+    var ciudades = ViewBag.Ciudades as IEnumerable<ProyectoAerolineaWeb.Models.Ciudad>;
+    var vuelos = (ViewBag.Vuelos as IEnumerable<ProyectoAerolineaWeb.Models.Vuelo>) ?? new List<ProyectoAerolineaWeb.Models.Vuelo>();
+    var fechasDisponiblesIda = ViewBag.FechasDisponiblesIda as string[] ?? new string[0];
+    var fechasDisponiblesVuelta = ViewBag.FechasDisponiblesVuelta as string[] ?? new string[0];
+}
+
+<!-- Video de fondo -->
+<video class="video-fondoinicio" autoplay muted loop playsinline>
+    <source src="~/mp4/Inicio.mp4" type="video/mp4">
+    Tu navegador no soporta video HTML5.
+</video>
+
+<!-- Contenido principal -->
+<div class="contenido-superior">
+    <div >
+        <div class="container py-4">
+            <div class="bg-dark-subtlerounded shadow p-4 mx-auto" style="max-width: 900px;">
+                <form class="row g-2 align-items-end" method="get" asp-controller="Home" asp-action="SeleccionarVuelo">
+                    <div class="col">
+                        <label for="origen" class="form-label">Origen</label>
+                        <select class="form-select" id="origen" name="origen" required>
+                            <option value="">Seleccione ciudad de origen</option>
+                            @foreach (var ciudadOrigen in vuelos.Select(v => v.CiudadOrigen).DistinctBy(c => c.Id).OrderBy(c => c.Nombre))
+                            {
+                                <option value="@ciudadOrigen.Id">@ciudadOrigen.Nombre</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="col">
+                        <label for="destino" class="form-label">Destino</label>
+                        <select class="form-select" id="destino" name="destino" required>
+                            <option value="">Seleccione ciudad de destino</option>
+                            @foreach (var ciudadDestino in vuelos
+                            .GroupBy(v => new { IdDestino = v.CiudadDestino.Id, NombreDestino = v.CiudadDestino.Nombre, IdOrigen = v.CiudadOrigen.Id })
+                            .Select(g => g.First())
+                            .OrderBy(v => v.CiudadDestino.Nombre))
+                            {
+                                <option value="@ciudadDestino.CiudadDestino.Id" data-origen="@ciudadDestino.CiudadOrigen.Id">
+                                    @ciudadDestino.CiudadDestino.Nombre
+                                </option>
+                            }
+                        </select>
+                    </div>
+                    <div class="col">
+                        <label for="fechaIda" class="form-label">Ida</label>
+                        <input type="text" class="form-control" id="fechaIda" name="fechaIda" required autocomplete="off">
+                    </div>
+                    <div class="col">
+                        <label for="fechaVuelta" class="form-label">Vuelta</label>
+                        <input type="text" class="form-control" id="fechaVuelta" name="fechaVuelta" autocomplete="off">
+                    </div>
+                    <div class="col">
+                        <label class="form-label">Adultos</label>
+                        <input type="number" class="form-control" id="adultos" name="adultos" min="1" value="1" required>
+                    </div>
+                    <div class="col">
+                        <label class="form-label">Niños</label>
+                        <input type="number" class="form-control" id="ninos" name="ninos" min="0" value="0">
+                    </div>
+                    <div class="col">
+                        <label class="form-label">Bebés</label>
+                        <input type="number" class="form-control" id="bebes" name="bebes" min="0" value="0">
+                    </div>
+                    <div class="col">
+                        <label class="form-label">Jóvenes</label>
+                        <input type="number" class="form-control" id="jovenes" name="jovenes" min="0" value="0">
+                    </div>
+                    <div class="col-auto align-self-end">
+                        <button type="submit" class="btn btn-dark px-4">Buscar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="container my-4">
+        <div class="row align-items-center bg-white rounded shadow" style="overflow:hidden;">
+            <div class="col-12 p-0">
+                <img src="/img/Ofertas/6.jpg" alt="Cartagena" class="img-fluid rounded-start" style="height: 250px; object-fit: cover; width: 100%; max-width1200px; ">
+            </div>
+        </div>
+    </div>
+
+    <div class="container my-5">
+        <h3 class="mb-4 text-info">Ofertas desde <span class="text-white">Peru</span></h3>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <img src="/img/Ofertas/1.jpg" class="img-fluid rounded" alt="Oferta 1">
+            </div>
+            <div class="col-md-4">
+                <img src="/img/Ofertas/4.jpg" class="img-fluid rounded" alt="Oferta 2">
+            </div>
+            <div class="col-md-4">
+                <img src="/img/Ofertas/5.jpg" class="img-fluid rounded" alt="Oferta 3">
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        // Filtrar destinos según el origen seleccionado
+        document.getElementById('origen').addEventListener('change', function () {
+            var origen = this.value;
+            var destinos = document.querySelectorAll('#destino option[data-origen]');
+            document.getElementById('destino').value = '';
+            destinos.forEach(function (opt) {
+                if (opt.getAttribute('data-origen') === origen) {
+                    opt.style.display = '';
+                } else {
+                    opt.style.display = 'none';
+                }
+            });
+        });
+
+        window.addEventListener('DOMContentLoaded', function () {
+            var origen = document.getElementById('origen').value;
+            var destinos = document.querySelectorAll('#destino option[data-origen]');
+            destinos.forEach(function (opt) {
+                opt.style.display = (opt.getAttribute('data-origen') === origen) ? '' : 'none';
+            });
+        });
+
+        // --- FLATPICKR FECHAS DISPONIBLES Y VALIDACIÓN ---
+        var fechasIda = @Html.Raw(System.Text.Json.JsonSerializer.Serialize(fechasDisponiblesIda));
+        var fechasVuelta = @Html.Raw(System.Text.Json.JsonSerializer.Serialize(fechasDisponiblesVuelta));
+
+        var fpIda = flatpickr("#fechaIda", {
+            dateFormat: "Y-m-d",
+            minDate: "today",
+            enable: fechasIda,
+            onChange: function(selectedDates, dateStr, instance) {
+                var minVuelta = "";
+                if (dateStr) {
+                    minVuelta = fechasVuelta.find(f => f > dateStr) || null;
+                }
+                fpVuelta.set('minDate', minVuelta);
+                fpVuelta.set('enable', fechasVuelta.filter(f => f > dateStr));
+                fpVuelta.clear();
+            },
+            onReady: resaltarFechasIda,
+            onMonthChange: resaltarFechasIda,
+            onValueUpdate: resaltarFechasIda
+        });
+
+        var fpVuelta = flatpickr("#fechaVuelta", {
+            dateFormat: "Y-m-d",
+            minDate: "today",
+            enable: fechasVuelta,
+            onReady: resaltarFechasVuelta,
+            onMonthChange: resaltarFechasVuelta,
+            onValueUpdate: resaltarFechasVuelta
+        });
+
+        function resaltarFechasIda(selectedDates, dateStr, instance) {
+            // Sin resaltado
+        }
+
+        function resaltarFechasVuelta(selectedDates, dateStr, instance) {
+            // Sin resaltado
+        }
+
+        // Validación de pasajeros
+        document.querySelector('form').addEventListener('submit', function (e) {
+            var adultos = parseInt(document.getElementById('adultos').value, 10) || 0;
+            var ninos = parseInt(document.getElementById('ninos').value, 10) || 0;
+            var bebes = parseInt(document.getElementById('bebes').value, 10) || 0;
+            var jovenes = parseInt(document.getElementById('jovenes').value, 10) || 0;
+
+            // Bebé o niño sin adulto
+            if ((bebes > 0 || ninos > 0) && adultos === 0) {
+                alert('Debe haber al menos un adulto para acompañar a bebés o niños.');
+                e.preventDefault();
+                return false;
+            }
+            // Solo un bebé por adulto
+            if (bebes > adultos) {
+                alert('Solo se permite un bebé por adulto.');
+                e.preventDefault();
+                return false;
+            }
+            // Si hay jóvenes, no puede haber bebés ni niños
+            if (jovenes > 0 && (bebes > 0 || ninos > 0)) {
+                alert('Si selecciona jóvenes, no puede agregar bebés ni niños.');
+                e.preventDefault();
+                return false;
+            }
+        });
+    </script>
+}

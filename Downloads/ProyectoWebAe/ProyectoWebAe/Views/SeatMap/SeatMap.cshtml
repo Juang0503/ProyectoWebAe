@@ -1,0 +1,237 @@
+﻿@model ProyectoAerolineaWeb.Models.SeleccionAsientoViewModel
+
+@{
+    ViewData["Title"] = "Mapa de Asientos";
+    var asientos = ViewBag.Asientos as List<ProyectoAerolineaWeb.Models.Asiento>;
+    var vueloId = ViewBag.VueloId;
+
+    // Agrupar asientos por fila (número)
+    var filas = asientos
+        .GroupBy(a => int.Parse(a.Numero.Substring(0, a.Numero.Length - 1)))
+        .OrderBy(g => g.Key)
+        .ToList();
+
+    var premium = filas.Where(f => f.Key >= 1 && f.Key <= 3).ToList();
+    var basico = filas.Where(f => f.Key >= 4 && f.Key <= 5).ToList();
+    var plus = filas.Where(f => f.Key >= 6 && f.Key <= 8).ToList();
+}
+<div class="chanty">
+    <h2 class="text-success ">Mapa de Asientos - Vuelo @vueloId</h2>
+    <div class="main ">
+        <div class="form ">
+            <form method="post">
+                @if (!ViewData.ModelState.IsValid)
+                {
+                    <div class="alert alert-danger">
+                        @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+                        {
+                            <div>@error.ErrorMessage</div>
+                        }
+                    </div>
+                }
+                <div class="mb-4">
+                    @for (int i = 0; i < Model.Pasajeros.Count; i++)
+                    {
+                        // Obtener los asientos seleccionados por otros pasajeros
+                        var asientosSeleccionadosPorOtros = Model.Pasajeros
+                        .Where((p, idx) => idx != i)
+                        .Select(p => p.AsientoSeleccionado)
+                        .Where(a => !string.IsNullOrEmpty(a))
+                        .ToList();
+
+                        <div class="mb-2">
+                            <label><strong>@Model.Pasajeros[i].NombreCompleto</strong></label>
+                            <select asp-for="Pasajeros[@i].AsientoSeleccionado" class="form-select" required>
+                                <option value="">Seleccionar asiento</option>
+                                @foreach (var asiento in Model.AsientosDisponibles)
+                                {
+                                    // Permitir el asiento si no está seleccionado por otro pasajero o si es el que ya tiene este pasajero
+                                    var seleccionadoPorEste = Model.Pasajeros[i].AsientoSeleccionado == asiento;
+                                    if (!asientosSeleccionadosPorOtros.Contains(asiento) || seleccionadoPorEste)
+                                    {
+                                        <option value="@asiento" selected="@(seleccionadoPorEste ? "selected" : null)">@asiento</option>
+                                    }
+                                }
+                            </select>
+                            <input type="hidden" asp-for="Pasajeros[@i].PasajeroId" />
+                            <input type="hidden" asp-for="Pasajeros[@i].NombreCompleto" />
+                        </div>
+                    }
+
+                    <div class="seat-section premium-section mb-4">
+                        <div class="section-header">
+                            <span class="section-title premium">Premium</span>
+                            <span class="section-price">Adiciona COP 300.000</span>
+                        </div>
+                        <div class="section-desc">Siéntate en las primeras filas del avión y disfruta de más espacio y mayor reclinación.</div>
+                        @foreach (var fila in premium)
+                        {
+                            <div class="seat-row mb-2">
+                                @foreach (var asiento in fila.OrderBy(a => a.Numero))
+                                {
+                                    var clase = asiento.Estado.ToLower() + " premium-seat";
+                                    <button type="button" class="seat @clase" disabled="@(asiento.Estado != "Disponible")">
+                                        @asiento.Numero
+                                    </button>
+                                }
+                            </div>
+                        }
+                    </div>
+
+                    <div class="seat-section basico-section mb-4">
+                        <div class="section-header">
+                            <span class="section-title basico">Básico</span>
+                            <span class="section-price">Adiciona COP 100.000</span>
+                        </div>
+                        <div class="section-desc">Asientos económicos.</div>
+                        @foreach (var fila in basico)
+                        {
+                            <div class="seat-row mb-2">
+                                @foreach (var asiento in fila.OrderBy(a => a.Numero))
+                                {
+                                    var clase = asiento.Estado.ToLower() + " basico-seat";
+                                    <button type="button" class="seat @clase" disabled="@(asiento.Estado != "Disponible")">
+                                        @asiento.Numero
+                                    </button>
+                                }
+                            </div>
+                        }
+                    </div>
+
+                    <div class="seat-section plus-section mb-4">
+                        <div class="section-header">
+                            <span class="section-title plus">Plus</span>
+                            <span class="section-price">Adiciona COP 200.000</span>
+                        </div>
+                        <div class="section-desc">Disfruta de mayor espacio, apoyacabezas ajustables y reclinación.</div>
+                        @foreach (var fila in plus)
+                        {
+                            <div class="seat-row mb-2">
+                                @foreach (var asiento in fila.OrderBy(a => a.Numero))
+                                {
+                                    var clase = asiento.Estado.ToLower() + " plus-seat";
+                                    <button type="button" class="seat @clase" disabled="@(asiento.Estado != "Disponible")">
+                                        @asiento.Numero
+                                    </button>
+                                }
+                            </div>
+                        }
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Continuar</button>
+            </form>
+        </div>
+
+    </div>
+
+</div>
+
+
+<style>
+    .seatmap, .seat-section {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .seat-row {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        margin-bottom: 5px;
+    }
+
+    .main {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+
+    .seat {
+        width: 40px;
+        height: 40px;
+        margin: 5px;
+        border-radius: 50%;
+        border: none;
+        font-weight: bold;
+        font-size: 1rem;
+        transition: box-shadow 0.2s;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+    }
+
+    .chanty {
+        background: #ffffff;
+        background: radial-gradient(circle, rgba(255, 255, 255, 1) 0%, rgba(148, 187, 233, 1) 100%);
+    }
+
+    .premium-seat {
+        background: #4B2067;
+        color: #fff;
+    }
+
+    .basico-seat {
+        background: #444;
+        color: #fff;
+    }
+
+    .plus-seat {
+        background: #E94B8A;
+        color: #fff;
+    }
+
+    .disponible {
+        opacity: 1;
+    }
+
+    .ocupado {
+        background: #F44336 !important;
+        color: white;
+        opacity: 0.5;
+    }
+
+    .bloqueado {
+        background: #FFC107 !important;
+        color: black;
+        opacity: 0.5;
+    }
+
+    .section-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 2px;
+    }
+
+    .section-title {
+        font-weight: bold;
+        font-size: 1.2rem;
+        margin-right: 1rem;
+    }
+
+        .section-title.premium {
+            color: #4B2067;
+        }
+
+        .section-title.basico {
+            color: #444;
+        }
+
+        .section-title.plus {
+            color: #E94B8A;
+        }
+
+    .section-price {
+        font-size: 1rem;
+        color: #888;
+        margin-left: auto;
+    }
+
+    .section-desc {
+        font-size: 0.95rem;
+        color: #666;
+        margin-bottom: 10px;
+    }
+</style>

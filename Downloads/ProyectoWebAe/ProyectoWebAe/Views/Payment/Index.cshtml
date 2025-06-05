@@ -1,0 +1,141 @@
+﻿@model ProyectoAerolineaWeb.Models.PaymentViewModel
+
+@{
+    ViewData["Title"] = "Método de Pago";
+    var meses = Enumerable.Range(1, 12)
+        .Select(m => new SelectListItem { Value = m.ToString(), Text = m.ToString("D2") }).ToList();
+    var anioActual = DateTime.Now.Year;
+    var anios = Enumerable.Range(anioActual, 12)
+        .Select(a => new SelectListItem { Value = a.ToString(), Text = a.ToString() }).ToList();
+}
+
+<video class="video-fondoinicio" autoplay muted loop playsinline>
+    <source src="~/mp4/servicio2.mp4" type="video/mp4">
+    Tu navegador no soporta video HTML5.
+</video>
+
+<div class="container mt-5" style="max-width: 500px;">
+    <div class="card shadow">
+        <div class="card-header bg-primary text-white text-center">
+            <h4 class="mb-0">Método de Pago</h4>
+        </div>
+        <div class="card-body">
+
+            @if (ViewBag.PagoExitoso != null)
+            {
+                <div class="alert alert-success text-center">
+                    @ViewBag.PagoExitoso
+                </div>
+            }
+
+            @if (Model.Pasajeros != null && Model.Pasajeros.Any())
+            {
+                <div class="mb-4">
+                    <h5>Detalle de Pasajeros</h5>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Asiento</th>
+                                <th></th>
+                                <th>Valor a Pagar</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @for (int i = 0; i < Model.Pasajeros.Count; i++)
+                            {
+                                <tr>
+                                    <td>@Model.Pasajeros[i].Nombre</td>
+                                    <td>@Model.Pasajeros[i].Asiento</td>
+                                    <td>
+                                        <form asp-controller="SeatMap" asp-action="SeatMap" method="get" style="display:inline;">
+                                            <input type="hidden" name="editIndex" value="@i" />
+                                            <input type="hidden" name="vueloId" value="@ViewBag.VueloId" />
+                                            <button type="submit" class="btn btn-sm btn-warning">Editar</button>
+                                        </form>
+                                    </td>
+                                    <td>@Model.Pasajeros[i].Valor.ToString("C0")</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                    <div class="text-end fw-bold">
+                        Total: @Model.Total.ToString("C0")
+                    </div>
+                </div>
+            }
+
+            <form asp-action="Index" method="post" autocomplete="off" id="formPago">
+                <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+
+                <div class="mb-3">
+                    <label asp-for="CardNumber" class="form-label"></label>
+                    <input asp-for="CardNumber" class="form-control" maxlength="19" placeholder="Ej: 4111 1111 1111 1111" id="CardNumber" />
+                    <span asp-validation-for="CardNumber" class="text-danger"></span>
+                    <small class="form-text text-muted">Incorrecto, numero mal o esta pelao.</small>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="CardHolder" class="form-label"></label>
+                    <input asp-for="CardHolder" class="form-control" placeholder="Nombre como aparece en la tarjeta" />
+                    <span asp-validation-for="CardHolder" class="text-danger"></span>
+                </div>
+                <div class="row mb-3">
+                    <div class="col">
+                        <label asp-for="ExpMonth" class="form-label"></label>
+                        <select asp-for="ExpMonth" class="form-select">
+                            <option value="">Mes</option>
+                            @foreach (var mes in meses)
+                            {
+                                <option value="@mes.Value">@mes.Text</option>
+                            }
+                        </select>
+                        <span asp-validation-for="ExpMonth" class="text-danger"></span>
+                    </div>
+                    <div class="col">
+                        <label asp-for="ExpYear" class="form-label"></label>
+                        <select asp-for="ExpYear" class="form-select">
+                            <option value="">Año</option>
+                            @foreach (var anio in anios)
+                            {
+                                <option value="@anio.Value">@anio.Text</option>
+                            }
+                        </select>
+                        <span asp-validation-for="ExpYear" class="text-danger"></span>
+                    </div>
+                    <div class="col">
+                        <label asp-for="CVV" class="form-label"></label>
+                        <input asp-for="CVV" class="form-control" maxlength="4" placeholder="CVV" />
+                        <span asp-validation-for="CVV" class="text-danger"></span>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-success w-100">Pagar</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        document.getElementById('formPago').addEventListener('submit', function (e) {
+            var cardInput = document.getElementById('CardNumber');
+            var cardNumber = cardInput.value.replace(/\D/g, '');
+            var errorMsg = document.getElementById('pagoError');
+            if (errorMsg) errorMsg.style.display = 'none';
+            if (cardNumber.length < 16) {
+                e.preventDefault();
+                if (!errorMsg) {
+                    errorMsg = document.createElement('div');
+                    errorMsg.id = 'pagoError';
+                    errorMsg.className = 'alert alert-danger mt-2';
+                    errorMsg.innerText = 'El número de tarjeta debe tener al menos 16 dígitos.';
+                    cardInput.parentNode.appendChild(errorMsg);
+                } else {
+                    errorMsg.style.display = '';
+                }
+                cardInput.focus();
+                return false;
+            }
+        });
+    </script>
+}
